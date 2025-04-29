@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { FaExternalLinkAlt } from "react-icons/fa";
-import arimayi from '../../public/images/arimayi.png';
+import Arimayi from '../../public/images/arimayi.png';
 import Dashboard from '../../public/images/dashboard.png';
 import Jobsearch from '../../public/images/jobsearch.png';
 import Details from '../../public/images/details.png';
@@ -51,7 +51,7 @@ const experiences = [
         place : "Issy-les-Moulineaux",
         title: "Stage chez ReeWayy",
         description: " Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end, avec la prise en charge d'une user story, tout en  travaillant en collaboration avec l'équipe back-end. Workflow présenté sous forme d'images.",
-        image: [arimayi, Dashboard, Jobsearch, Details, cv, cv2, cv3, validate, redirect],
+        image: [Arimayi, Dashboard, Jobsearch, Details, cv, cv2, cv3, validate, redirect],
         years: "Janvier 2025 - Mars 2025",
         color: "#FFFFFF",
         message: "Voir code GitHub",

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useMotionValue, motion } from 'framer-motion';
-import footballStory from '../../public/images/FootballStory.png';
+import footballstory from '../../public/images/footballstory.png';
 import portfolio from '../../public/images/portfolio.png';
 import msg from '../../public/images/msg.png';
 import pingme from '../../public/images/pingme.png';
@@ -32,7 +32,7 @@ const projet = [
         year: 2023,
         title: "Football Story",
         description: "Un site retraçant l'histoire du football, ses grands joueurs et ses moments historiques. J'ai entrepris ce projet pour parler de ma passion pour le football. ",
-        image: [footballStory],
+        image: [footballstory],
         years: "Juin 2024 ",
         color: "#33FF57",
         message: "Voir le site",
