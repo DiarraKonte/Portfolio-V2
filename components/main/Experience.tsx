@@ -6,17 +6,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { FaExternalLinkAlt } from "react-icons/fa";
-import Arimayi from '../../public/images/arimayi.png';
-import Dashboard from '../../public/images/dashboard.png';
-import Jobsearch from '../../public/images/jobsearch.png';
-import Details from '../../public/images/details.png';
-import cv from '../../public/images/cv.png';
-import cv2 from '../../public/images/cv2.png';
-import cv3 from '../../public/images/cv3.png';
-import validate from '../../public/images/validate.png';
-import redirect from '../../public/images/redirect.png';
-import besmart from '../../public/images/besmart.png';
-import Uber from '../../public/images/ubereats.jpg';
 
 const experiences = [
     {
@@ -24,8 +13,8 @@ const experiences = [
         year: 2024,
         place : "Argenteuil",
         title: "Livreur independant Uber Eats",
-        description: "Livraison de repas pour des particuliers via la plateforme Uber Eats. ",
-        image: [Uber],
+        description: "Livraison de repas pour des particuliers via la plateforme Uber Eats.",
+        image: ["/ubereats.jpg"],
         years: "Avril 2022 - aujourd'hui",
         color: "#13FFAA",
         message: "",
@@ -38,20 +27,30 @@ const experiences = [
       place : "Seine-Saint-Denis",
       title: "Assistant technicien electronique ",
       description: "Participation au développement de l'espace personnel des apprenants sur la plateforme AriMayi. Collaboration avec l'équipe back-end pour implémenter des fonctionnalités spécifiques et résoudre des problèmes complexes.",
-      image: [besmart],
+      image: ["/besmart.png"],
       years: "Juin 2023 - Aout 2023",
       color: "#FFFF00",
       message: "",
       technologies: ["Relation client", "Electronique"],
       externalLink: ""
-     },
+    },
     {
         id: 3,
         year: 2023,
         place : "Issy-les-Moulineaux",
         title: "Stage chez ReeWayy",
-        description: " Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end, avec la prise en charge d'une user story, tout en  travaillant en collaboration avec l'équipe back-end. Workflow présenté sous forme d'images.",
-        image: [Arimayi, Dashboard, Jobsearch, Details, cv, cv2, cv3, validate, redirect],
+        description: "Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end, avec la prise en charge d'une user story, tout en travaillant en collaboration avec l'équipe back-end. Workflow présenté sous forme d'images.",
+        image: [
+            "/arimayi.png",
+            "/dashboard.png",
+            "/jobsearch.png",
+            "/details.png",
+            "/cv.png",
+            "/cv2.png",
+            "/cv3.png",
+            "/validate.png",
+            "/redirect.png"
+        ],
         years: "Janvier 2025 - Mars 2025",
         color: "#FFFFFF",
         message: "Voir code GitHub",
@@ -167,4 +166,4 @@ const Experience = () => {
     );
 };
 
-export default Experience
+export default Experience;
