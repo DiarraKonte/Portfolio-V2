@@ -6,7 +6,6 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 const Contact = () => {
 ;
 
-  // État pour animer les boutons au survol
   const [hoveredEmail, setHoveredEmail] = useState(false);
   const [hoveredPhone, setHoveredPhone] = useState(false);
  

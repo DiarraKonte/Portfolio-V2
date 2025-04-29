@@ -31,7 +31,7 @@ export default function Home() {
         <Contact/>
       </section>
       <section>
-        <Footer className="bg-black" />
+        <Footer />
       </section>
      
     </>

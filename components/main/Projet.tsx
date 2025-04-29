@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { animate, useMotionValue, useMotionTemplate, motion } from 'framer-motion';
+import { useMotionValue, motion } from 'framer-motion';
 import footballStory from '../../public/images/FootballStory.png';
 import portfolio from '../../public/images/portfolio.png';
 import msg from '../../public/images/msg.png';
