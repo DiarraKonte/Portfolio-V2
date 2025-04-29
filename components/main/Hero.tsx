@@ -3,24 +3,23 @@ import React, { useEffect } from 'react';
 import { animate, useMotionValue, useMotionTemplate, motion } from 'framer-motion';
 import { FiArrowDownRight } from 'react-icons/fi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa'; 
-import { col } from 'framer-motion/client';
 
-const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
 const Hero = () => {
 
-    const color = useMotionValue(COLORS_TOP[0]);
-    const textColor = useMotionValue(COLORS_TOP[0]);
+    const color = useMotionValue(COLORS[0]);
+    const textColor = useMotionValue(COLORS[0]);
 
     useEffect(() => {
-        const bgAnimation = animate(color, COLORS_TOP, {
+        const bgAnimation = animate(color, COLORS, {
             ease: "easeInOut",
             duration: 10,
             repeat: Infinity,
             repeatType: "mirror"
         });
 
-        const textAnimation = animate(textColor, COLORS_TOP, {
+        const textAnimation = animate(textColor, COLORS, {
             ease: "easeInOut",
             duration: 10,
             repeat: Infinity,
@@ -72,7 +71,7 @@ const Hero = () => {
                     > alternance</motion.span>
                 </span>
                 <p className='my-6 max-w-xl text-center'>
-                    Étudiant de deuxième année en BUT Informatique à l'IUT de la Sorbonne Paris Nord.
+                    Étudiant de deuxième année en BUT Informatique à l&apos;IUT de la Sorbonne Paris Nord.
                 </p>
 
                 <motion.button

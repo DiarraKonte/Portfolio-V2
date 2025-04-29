@@ -63,7 +63,7 @@ const Projet = () => {
 
     return (
         <motion.section style={backgroundIMG} id='projects' className='py-32 sm:py-32 md:py-32 sm:px-6 lg:px-28 text-white'>
-            <div className='max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12'>
+            <div className='amx-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12'>
                 <div>
                     <h2 className='text-6xl font-bold mb-10'><span className='text-gray-400'>Projets</span> </h2>
                     {projet.map((projet) => (
