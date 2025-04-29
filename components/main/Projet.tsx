@@ -50,7 +50,6 @@ const projet = [
     }
 ];
 
-const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
 const Projet = () => {
     const [selectedProject, setSelectedProject] = React.useState(projet[0]);

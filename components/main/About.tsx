@@ -11,25 +11,24 @@ const aboutContent = [
     content:
     <>
         <p className="text-gray-400">
-        J'etais initialement peu attiré par le 
-        <span className="font-bold text-white"> développement en général</span>, j'ai commencé à m'y passionner en découvrant 
-        <span className="font-bold text-white"> l'univers de l'informatique</span>, des 
+        J&apos;etais initialement peu attiré par le 
+        <span className="font-bold text-white"> développement en général</span>, j&apos;ai commencé à m&apos;y passionner en découvrant 
+        <span className="font-bold text-white"> l&apos;univers de l&apos;informatique</span>, des 
         <span className="font-bold text-white"> nouvelles technologies</span> et de 
-        <span className="font-bold text-white"> l'intelligence artificielle</span>. 
-        Aujourd'hui, je suis en 
-        <span className="font-bold text-white"> deuxième année de BUT Informatique</span> à l'
+        <span className="font-bold text-white"> l&apos;intelligence artificielle</span>. 
+        Aujourd&apos;hui, je suis en 
+        <span className="font-bold text-white"> deuxième année de BUT Informatique</span> à l&apos;
         <span className="font-bold text-white"> IUT de la Sorbonne Paris Nord</span>.
         </p>
     </>,
-   stats: [
-    { value: "2+", label: "Années d'études en Informatique", color: "text-yellow-400" },
-    { value: "Parcours du BUT", label: "Réalisation d'applications : conception, développement, validation", color: "text-blue-400" }
-  ]
-  
+    stats: [
+      { value: "2+", label: "Années d'études en Informatique", color: "text-yellow-400" },
+      { value: "Parcours du BUT", label: "Réalisation d'applications : conception, développement, validation", color: "text-blue-400" }
+    ]
   },
   {
-    title: "Mes compétences",
-    content: "Je maîtrise plusieurs technologies front-end modernes, notamment React, Next.js et Tailwind CSS. Mes connaissances s'étendent également au back-end avec Node.js, Express et MongoDB. Je suis constamment à l'affût des dernières tendances pour améliorer mes compétences.",
+    title: "Mon But",
+    content: "En tant qu'étudiant, mon principal objectif est de toucher à tout, que ce soit du front-end ou du back-end. Je veux avoir une vision large de ce que l'informatique, le développement web et l'IA peuvent offrir.",
     stats: [
       { value: "8+", label: "Technologies ", color: "text-green-400" },
       { value: "1", label: "Frameworks", color: "text-purple-400" }
@@ -40,16 +39,16 @@ const aboutContent = [
     content: (
       <>
         <p className="text-gray-400">
-        J'ai débuté mon parcours scolaire au 
-        <span className="font-bold text-white"> collège Claude Monet</span> à Argenteuil où j'ai obtenu mon 
-        <span className="font-bold text-white"> brevet mention Très Bien</span>, puis j'ai poursuivi au 
+        J&apos;ai débuté mon parcours scolaire au 
+        <span className="font-bold text-white"> collège Claude Monet</span> à Argenteuil où j&apos;ai obtenu mon 
+        <span className="font-bold text-white"> brevet mention Très Bien</span>, puis j&apos;ai poursuivi au 
         <span className="font-bold text-white"> lycée Julie-Victoire Daubié</span>, obtenant mon 
         <span className="font-bold text-white"> baccalauréat scientifique avec mention Assez Bien</span>, 
         en spécialités 
         <span className="font-bold text-white"> Mathématiques, Physique-Chimie</span> et 
         <span className="font-bold text-white"> Mathématiques Expertes</span>. 
         Actuellement, je poursuis mes études en 
-        <span className="font-bold text-white"> BUT Informatique à l'IUT Sorbonne Paris Nord</span> 
+        <span className="font-bold text-white"> BUT Informatique à l&apos;IUT Sorbonne Paris Nord</span> 
         afin de renforcer mes compétences en développement et en informatique.
         </p>
       </>
@@ -62,7 +61,7 @@ const aboutContent = [
    
   {
     title: "Mes objectifs",
-    content: "Je souhaite devenir un développeur fullstack polyvalent pour un jour pouvoir me lancer en tant que freelance ou creer ma propre entreprise. Je veux decouvrir le plus de technologies possibles et me perfectionner dans celles que j'aimerais le plus et pour ce faire j'adorerais travailler sur des projets toujours plus creatifs et innovants.",
+    content: "Je souhaite devenir un développeur fullstack polyvalent pour un jour pouvoir me lancer en tant que freelance ou créer ma propre entreprise. Je veux découvrir le plus de technologies possibles et me perfectionner dans celles que j'aimerais le plus et pour ce faire j'adorerais travailler sur des projets toujours plus créatifs et innovants.",
     stats: [
       { value: "∞", label: "Envie d'apprendre", color: "text-orange-400" },
       { value: "100%", label: "Motivation", color: "text-indigo-400" }
@@ -82,8 +81,8 @@ const About = () => {
       repeatType: "mirror"
     });
     return () => animation.stop();
-  }, []);
-
+  }, [color]); // Ajout de 'color' comme dépendance
+  
   const background = useMotionTemplate`radial-gradient(170% 120% at 50% 100%, #000 30%, ${color})`;
   
   const nextSlide = () => {

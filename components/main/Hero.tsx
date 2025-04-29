@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { animate, useMotionValue, useMotionTemplate, motion } from 'framer-motion';
 import { FiArrowDownRight } from 'react-icons/fi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa'; 
+import { col } from 'framer-motion/client';
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
@@ -30,7 +31,7 @@ const Hero = () => {
             bgAnimation.stop();
             textAnimation.stop();
         };
-    }, []);
+    }, [color, textColor]);
 
     const backgroundIMG = useMotionTemplate`radial-gradient(140% 125% at 50% 0%, #000 40%, ${color} 100%)`;
     const textGradient = useMotionTemplate`linear-gradient(to right, ${textColor}, #FFFFFF)`;
@@ -59,7 +60,7 @@ const Hero = () => {
                     Diarra Konte
                 </h1>
                 <span className='mb-1.5 inline-block rounded-full bg-gray-600/40 px-3 py-1.5 text-sm text-center'>
-                    Etudiant en Informatique, à la recherche d'une
+                    Etudiant en Informatique, à la recherche d&apos;une
                     <motion.span
                         style={{
                             backgroundImage: textGradient,
@@ -70,7 +71,6 @@ const Hero = () => {
                         className='font-bold'
                     > alternance</motion.span>
                 </span>
-
                 <p className='my-6 max-w-xl text-center'>
                     Étudiant de deuxième année en BUT Informatique à l'IUT de la Sorbonne Paris Nord.
                 </p>
@@ -83,11 +83,17 @@ const Hero = () => {
                     whileHover={{ scale: 1.015 }}
                     whileTap={{ scale: 0.985 }}
                     className='flex w-fit items-center gap-2 rounded-full px-4 py-2'
-                    onClick={() => window.open('/moncv.pdf', '_blank')}
+                    onClick={() => {
+                        const link = document.createElement('a');
+                        link.href = '/moncv.pdf';
+                        link.download = 'CV_Diarra_Konte.pdf';
+                        link.click();
+                    }}
                 >
                     Télécharger mon CV
                     <FiArrowDownRight />
                 </motion.button>
+
                 <div className='mt-6 flex gap-6 text-3xl'>
                     <a href="https://github.com/diarrakonte" target="_blank" rel="noopener noreferrer" className='hover:text-gray-400 transition-colors'>
                         <FaGithub />

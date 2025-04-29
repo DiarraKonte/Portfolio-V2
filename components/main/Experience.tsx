@@ -59,7 +59,6 @@ const experiences = [
     },
 ];
 
-const COLORS_TOP =["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
 const Experience = () => {
     const [selectedProject, setSelectedProject] = useState(experiences[0]);
