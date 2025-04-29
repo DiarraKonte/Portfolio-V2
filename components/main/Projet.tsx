@@ -20,7 +20,7 @@ const projet = [
         color: "#1dd396",
         message: "Voir code GitHub",
         technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Git", "GitHub"],
-        externalLink: ''
+        externalLink: 'https://github.com/DiarraKonte/Portfolio-V2'
     },
     {
         id: 3,
