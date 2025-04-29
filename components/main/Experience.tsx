@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { FaExternalLinkAlt } from "react-icons/fa";
-import ReeWayy from '../../public/images/reewayy.png';
+import arimayi from '../../public/images/arimayi.png';
 import Dashboard from '../../public/images/dashboard.png';
 import Jobsearch from '../../public/images/jobsearch.png';
 import Details from '../../public/images/details.png';
@@ -22,7 +22,7 @@ const experiences = [
     {
         id: 2,
         year: 2024,
-        place : "AriMayi",
+        place : "Argenteuil",
         title: "Livreur independant Uber Eats",
         description: "Livraison de repas pour des particuliers via la plateforme Uber Eats. ",
         image: [Uber],
@@ -35,7 +35,7 @@ const experiences = [
     {
       id: 1,
       year: 2023,
-      place : "AriMayi",
+      place : "Seine-Saint-Denis",
       title: "Assistant technicien electronique ",
       description: "Participation au développement de l'espace personnel des apprenants sur la plateforme AriMayi. Collaboration avec l'équipe back-end pour implémenter des fonctionnalités spécifiques et résoudre des problèmes complexes.",
       image: [besmart],
@@ -51,7 +51,7 @@ const experiences = [
         place : "Issy-les-Moulineaux",
         title: "Stage chez ReeWayy",
         description: " Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end, avec la prise en charge d'une user story, tout en  travaillant en collaboration avec l'équipe back-end. Workflow présenté sous forme d'images.",
-        image: [ReeWayy, Dashboard, Jobsearch, Details, cv, cv2, cv3, validate, redirect],
+        image: [arimayi, Dashboard, Jobsearch, Details, cv, cv2, cv3, validate, redirect],
         years: "Janvier 2025 - Mars 2025",
         color: "#FFFFFF",
         message: "Voir code GitHub",
@@ -85,7 +85,7 @@ const Experience = () => {
         <div className='amx-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12'>
           <div>
             <h2 className='text-6xl font-bold mb-10'>
-              <span className='text-gray-400'>expériences</span>
+              <span className='text-gray-400'>Expériences</span>
             </h2>
             
             {experiences.map((exp) => (
