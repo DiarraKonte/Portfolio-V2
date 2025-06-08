@@ -6,8 +6,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { Link } from 'lucide-react';
 
-// Mise à jour des chemins d'images avec des chemins relatifs
 const projet = [
     {
         id: 2,
@@ -47,6 +47,20 @@ const projet = [
         message: "Voir code GitHub",
         technologies: ["Php", "Node.js", "WebSockets", "Ratchet", "MVC", "GitHub", "MySQL", "PostgreSQL", "XAMPP", "PhpMyAdmin", "JavaScript"],
         externalLink: "https://github.com/Cheick6/SAE_S1"
+    },
+    {
+        id: 5,
+        year: 2024,
+        place : "",
+        title: "LumnPC",
+        description: "Site proposant des modules pour aider les debutant a choisir leur pc gaming, avec un système de compte et un moyenn de paiement par stripe.",
+        image: ["/lumn0.png", "/lumn0.5.png","/Lumn1.png", "/Lumn2.png", "/Lumn3.png", "/Lumn4.png", "/Lumn5.png", "/Lumn6.png", "/LumnAccount.png"],
+        years: "Mai 2025 ",
+        color: "#1dd396",
+        message: "Voir code GitHub",
+        Link: "Le site",
+        technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Stripe", "Git", "GitHub", "Vercel", "OVH", "Resend", "Firebase", "Firestore", "GoogleOAuth"],
+        externalLink: 'https://github.com/DiarraKonte/Infobusiness-PC'
     }
 ];
 
@@ -70,7 +84,7 @@ const Projet = () => {
                         <div key={projet.id}
                              onClick={() => setSelectedProject(projet)}
                              className='cursor-pointer mb-8 group'>
-                            <p className='text-gray-400 text-lg mb-2'>{projet.years}, <span className='font-bold'>{projet.place}</span></p>
+                            <p className='text-gray-400 text-lg mb-2'>{projet.years} <span className='font-bold'>{projet.place}</span></p>
                             <h3 className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors 
                                         ${selectedProject.id === projet.id ? 'text-gray-200' : ''} duration-300`}>
                                 {projet.title}
@@ -86,6 +100,13 @@ const Projet = () => {
                                         <span>{projet.message}</span>
                                         <FaExternalLinkAlt />
                                     </a>
+
+                                    {projet.Link && (
+                                        <a href="https://www.lumnpc.fr/" target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-gray-400 flex items-center gap-2">
+                                            <span>{projet.Link}</span>
+                                            <Link />
+                                        </a>
+                                    )}
 
                                     <div className="flex flex-wrap gap-2 mt-2">
                                         {projet.technologies.map((tech) => (

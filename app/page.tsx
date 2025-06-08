@@ -26,7 +26,6 @@ export default function Home() {
       <section>
         <Projet/>
       </section>
-     
       <section className="bg-black">
         <Contact/>
       </section>
