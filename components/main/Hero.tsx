@@ -84,7 +84,7 @@ const Hero = () => {
                     className='flex w-fit items-center gap-2 rounded-full px-4 py-2'
                     onClick={() => {
                         const link = document.createElement('a');
-                        link.href = '/moncv.pdf';
+                        link.href = '/MONCV-ATS.pdf';
                         link.download = 'CV_Diarra_Konte.pdf';
                         link.click();
                     }}

@@ -27,6 +27,31 @@ const aboutContent = [
     ]
   },
   {
+    title: "Développement personnel",
+    content:
+    <>
+      <p className="text-gray-400 mt-4">
+        <span className="font-bold text-white">Débuts dans le supérieur :</span> Mon entrée en BUT 1 a marqué le début de mes études supérieures. Ne venant pas d’un parcours informatique, mes premiers pas ont été compliqués : je ne connaissais ni les outils ni les méthodes de ce domaine.
+      </p>
+      <p className="text-gray-400 mt-2">
+        <span className="font-bold text-white">Déclic progressif :</span> Grâce aux projets scolaires (SAE) et à mes projets personnels, j’ai peu à peu découvert le monde de l’informatique et j’ai commencé à aimer le développement.
+      </p>
+      <p className="text-gray-400 mt-2">
+        <span className="font-bold text-white">Évolution :</span> Mon parcours en BUT m’a permis de renforcer mes compétences techniques, d’améliorer ma gestion du temps et de développer mon sens du travail en équipe.
+      </p>
+      <p className="text-gray-400 mt-2">
+        <span className="font-bold text-white">Confiance :</span> J’ai appris à tirer parti de mes erreurs, à mieux me connaître et à consolider mes points forts comme l’apprentissage rapide de nouveaux outils.
+      </p>
+      <p className="text-gray-400 mt-2">
+        <span className="font-bold text-white">Orientation  :</span> Mes stages et projets m'ont conforté dans ma volonté d’évoluer dans le développement et d'un jour travailler a mon compte en ouvrant une entreprise IT.
+      </p>
+      <p className="text-gray-400 mt-2">
+        <span className="font-bold text-white">Passions découvertes :</span> Plus j'en apprendais sur l'informatique et les nouvelles technologies, plus j'aimais le développement et plus j'aimais l'intelligence artificielle.
+      </p>
+    </>,
+    stats: [] 
+  },
+  {
     title: "Mon But",
     content: "En tant qu'étudiant, mon principal objectif est de toucher à tout, que ce soit du front-end ou du back-end. Je veux avoir une vision large de ce que l'informatique, le développement web et l'IA peuvent offrir.",
     stats: [
@@ -48,7 +73,7 @@ const aboutContent = [
         <span className="font-bold text-white"> Mathématiques, Physique-Chimie</span> et 
         <span className="font-bold text-white"> Mathématiques Expertes</span>. 
         Actuellement, je poursuis mes études en 
-        <span className="font-bold text-white"> BUT Informatique à l&apos;IUT Sorbonne Paris Nord</span> 
+        <span className="font-bold text-white"> BUT Informatique à l&apos;IUT Sorbonne Paris Nord </span> 
         afin de renforcer mes compétences en développement et en informatique.
         </p>
       </>
