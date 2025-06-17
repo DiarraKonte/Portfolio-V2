@@ -43,17 +43,17 @@ const aboutContent = [
         <span className="font-bold text-white">Confiance :</span> J’ai appris à tirer parti de mes erreurs, à mieux me connaître et à consolider mes points forts comme l’apprentissage rapide de nouveaux outils.
       </p>
       <p className="text-gray-400 mt-2">
-        <span className="font-bold text-white">Orientation  :</span> Mes stages et projets m'ont conforté dans ma volonté d’évoluer dans le développement et d'un jour travailler a mon compte en ouvrant une entreprise IT.
+        <span className="font-bold text-white">Orientation  :</span> Mes stages et projets m&apos;ont conforté dans ma volonté d’évoluer dans le développement et d&apos;un jour travailler a mon compte en ouvrant une entreprise IT.
       </p>
       <p className="text-gray-400 mt-2">
-        <span className="font-bold text-white">Passions découvertes :</span> Plus j'en apprendais sur l'informatique et les nouvelles technologies, plus j'aimais le développement et plus j'aimais l'intelligence artificielle.
+        <span className="font-bold text-white">Passions découvertes :</span> Plus j&apos;en apprendais sur l&apos;informatique et les nouvelles technologies, plus j&apos;aimais le développement et plus j&apos;aimais l&apos;intelligence artificielle.
       </p>
     </>,
     stats: [] 
   },
   {
     title: "Mon But",
-    content: "En tant qu'étudiant, mon principal objectif est de toucher à tout, que ce soit du front-end ou du back-end. Je veux avoir une vision large de ce que l'informatique, le développement web et l'IA peuvent offrir.",
+    content: "En tant qu&apos;étudiant, mon principal objectif est de toucher à tout, que ce soit du front-end ou du back-end. Je veux avoir une vision large de ce que l&apos;informatique, le développement web et l&apos;IA peuvent offrir.",
     stats: [
       { value: "8+", label: "Technologies ", color: "text-green-400" },
       { value: "1", label: "Frameworks", color: "text-purple-400" }
