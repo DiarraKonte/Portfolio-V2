@@ -32,7 +32,7 @@ const Hero = () => {
         };
     }, [color, textColor]);
 
-    const backgroundIMG = useMotionTemplate`radial-gradient(140% 125% at 50% 0%, #000 40%, ${color} 100%)`;
+  const backgroundIMG = useMotionTemplate`radial-gradient(170% 120% at 50% 100%, #000 30%, ${color})`;
     const textGradient = useMotionTemplate`linear-gradient(to right, ${textColor}, #FFFFFF)`;
     const border = useMotionTemplate`1px solid ${color}`;
     const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;

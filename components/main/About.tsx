@@ -27,30 +27,30 @@ const aboutContent = [
     ]
   },
   {
-    title: "Développement personnel",
-    content:
-    <>
-      <p className="text-gray-400 mt-4">
-        <span className="font-bold text-white">Débuts dans le supérieur :</span> Mon entrée en BUT 1 a marqué le début de mes études supérieures. Ne venant pas d’un parcours informatique, mes premiers pas ont été compliqués : je ne connaissais ni les outils ni les méthodes de ce domaine.
-      </p>
-      <p className="text-gray-400 mt-2">
-        <span className="font-bold text-white">Déclic progressif :</span> Grâce aux projets scolaires (SAE) et à mes projets personnels, j’ai peu à peu découvert le monde de l’informatique et j’ai commencé à aimer le développement.
-      </p>
-      <p className="text-gray-400 mt-2">
-        <span className="font-bold text-white">Évolution :</span> Mon parcours en BUT m’a permis de renforcer mes compétences techniques, d’améliorer ma gestion du temps et de développer mon sens du travail en équipe.
-      </p>
-      <p className="text-gray-400 mt-2">
-        <span className="font-bold text-white">Confiance :</span> J’ai appris à tirer parti de mes erreurs, à mieux me connaître et à consolider mes points forts comme l’apprentissage rapide de nouveaux outils.
-      </p>
-      <p className="text-gray-400 mt-2">
-        <span className="font-bold text-white">Orientation  :</span> Mes stages et projets m&apos;ont conforté dans ma volonté d’évoluer dans le développement et d&apos;un jour travailler a mon compte en ouvrant une entreprise IT.
-      </p>
-      <p className="text-gray-400 mt-2">
-        <span className="font-bold text-white">Passions découvertes :</span> Plus j&apos;en apprendais sur l&apos;informatique et les nouvelles technologies, plus j&apos;aimais le développement et plus j&apos;aimais l&apos;intelligence artificielle.
-      </p>
-    </>,
-    stats: [] 
-  },
+    title: "",
+    content: 
+  <>
+    <p className="text-gray-400 mt-4">
+      Mon entrée en BUT 1 a marqué le début de mes études supérieures dans un domaine qui m'était totalement inconnu. Ne venant pas d'un parcours informatique, mes premiers pas ont été compliqués : je ne maîtrisais ni les outils ni les langages de programmation ni les méthodes.
+    </p>
+    <p className="text-gray-400 mt-2">
+      C'est progressivement, à travers les projets scolaires (SAE) et mes initiatives personnelles, que j'ai découvert l'univers fascinant de l'informatique. Cette immersion graduelle a éveillé en moi une véritable passion pour le développement.
+    </p>
+    <p className="text-gray-400 mt-2">
+      Mon parcours en BUT s'est révélé être un tremplin décisif : j'y ai consolidé mes compétences techniques, affiné ma gestion du temps et développé mon aptitude au travail collaboratif. Ces apprentissages ont posé les bases solides de mon évolution professionnelle.
+    </p>
+    <p className="text-gray-400 mt-2">
+      Au fil de cette formation, j'ai appris à transformer mes erreurs en opportunités d'apprentissage, à mieux cerner mes forces et à capitaliser sur ma capacité d'adaptation rapide aux nouveaux outils technologiques.
+    </p>
+    <p className="text-gray-400 mt-2">
+      Mes expériences de stage et mes projets ont confirmé ma détermination à poursuivre dans le développement, avec l'ambition entrepreneuriale de créer un jour ma propre entreprise dans le secteur IT.
+    </p>
+    <p className="text-gray-400 mt-2">
+      Cette exploration continue de l'informatique et des nouvelles technologies a renforcé deux passions majeures : le développement logiciel et l'intelligence artificielle, domaines qui nourrissent désormais mes aspirations professionnelles.
+    </p>
+  </>,
+  stats: []
+},
   {
     title: "Mon But",
     content: "En tant qu&apos;étudiant, mon principal objectif est de toucher à tout, que ce soit du front-end ou du back-end. Je veux avoir une vision large de ce que l&apos;informatique, le développement web et l&apos;IA peuvent offrir.",
@@ -108,7 +108,7 @@ const About = () => {
     return () => animation.stop();
   }, [color]); // Ajout de 'color' comme dépendance
   
-  const background = useMotionTemplate`radial-gradient(170% 120% at 50% 100%, #000 30%, ${color})`;
+  const background = useMotionTemplate`radial-gradient(140% 125% at 50% 0%, #000 40%, ${color} 100%)`;
   
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % aboutContent.length);

@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useMotionValue, motion } from 'framer-motion';
+import { useMotionValue, useMotionTemplate, motion, animate, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from 'lucide-react';
+
+// Liste de couleurs cycliques pour le fond
+const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
 const projet = [
     {
@@ -28,7 +32,7 @@ const projet = [
         year: 2023,
         title: "Football Story",
         description: "Un site retraçant l'histoire du football, ses grands joueurs et ses moments historiques. J'ai entrepris ce projet pour parler de ma passion pour le football.",
-        image: ["/footballstory.png"],
+        image: ["/FS.png", "/FS2.png", "/FS3.png","/FS4.png"],
         years: "Juin 2024 ",
         color: "#33FF57",
         message: "Voir le site",
@@ -40,7 +44,7 @@ const projet = [
         year: 2023,
         place : "IUT Sorbonne Paris Nord",
         title: "Plateforme de discussion",
-        description: "Développement, dans le cadre d'une SAE (Situation d’Apprentissage et d’Évaluation), d'une application de messagerie et d'annotation de messages en temps réel. Le projet consistait à permettre aux utilisateurs de commenter et classer des messages, puis à collecter les annotations dans une base de données pour analyse.",
+        description: "Développement, dans le cadre d'une SAE (Situation d'Apprentissage et d'Évaluation), d'une application de messagerie et d'annotation de messages en temps réel. Le projet consistait à permettre aux utilisateurs de commenter et classer des messages, puis à collecter les annotations dans une base de données pour analyse.",
         image: ["/pingme.png", "/discussion.png", "/msg.png"],
         years: "Octobre 2024 - Décembre 2024",
         color: "#1E67C6",
@@ -64,85 +68,347 @@ const projet = [
     }
 ];
 
-
 const Projet = () => {
-    const [selectedProject, setSelectedProject] = React.useState(projet[0]);
-    const color = useMotionValue(selectedProject.color);
+  const [selectedProject, setSelectedProject] = useState(projet[0]);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-    useEffect(() => {
-        color.set(selectedProject.color);
-    }, [selectedProject, color]);
+  // Valeur animée pour la couleur
+  const color = useMotionValue(COLORS[0]);
 
-    const backgroundIMG = { background: `radial-gradient(140% 125% at 50% 0%, #000 40%, ${selectedProject.color} 100%)` };
+  // Dégradé animé basé sur la couleur
+  const backgroundIMG = useMotionTemplate`radial-gradient(170% 120% at 50% 100%, #000 30%, ${color})`;
 
-    return (
-        <motion.section style={backgroundIMG} id='projects' className='py-32 sm:py-32 md:py-32 sm:px-6 lg:px-28 text-white'>
-            <div className='amx-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12'>
-                <div>
-                    <h2 className='text-6xl font-bold mb-10'><span className='text-gray-400'>Projets</span> </h2>
-                    {projet.map((projet) => (
-                        <div key={projet.id}
-                             onClick={() => setSelectedProject(projet)}
-                             className='cursor-pointer mb-8 group'>
-                            <p className='text-gray-400 text-lg mb-2'>{projet.years} <span className='font-bold'>{projet.place}</span></p>
-                            <h3 className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors 
-                                        ${selectedProject.id === projet.id ? 'text-gray-200' : ''} duration-300`}>
-                                {projet.title}
-                            </h3>
-                            {selectedProject.id === projet.id && (
-                                <div className="border-b-2 border-gray-200 my-4"></div>
-                            )}
-                            {selectedProject.id === projet.id && (
-                                <div className="text-gray-400 transition-all duration-500 ease-in-out">
-                                    <p>{projet.description}</p>
+  useEffect(() => {
+    const animation = animate(color, COLORS, {
+      ease: "easeInOut",
+      duration: 12,
+      repeat: Infinity,
+      repeatType: "mirror"
+    });
 
-                                    <a href={projet.externalLink} target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-gray-400 flex items-center gap-2">
-                                        <span>{projet.message}</span>
-                                        <FaExternalLinkAlt />
-                                    </a>
+    // Afficher temporairement l'indice de scroll
+    setShowScrollHint(true);
+    const timer = setTimeout(() => setShowScrollHint(false), 3000);
 
-                                    {projet.Link && (
-                                        <a href="https://www.lumnpc.fr/" target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-gray-400 flex items-center gap-2">
-                                            <span>{projet.Link}</span>
-                                            <Link />
-                                        </a>
-                                    )}
+    return () => {
+      animation.stop();
+      clearTimeout(timer);
+    };
+  }, [color]);
 
-                                    <div className="flex flex-wrap gap-2 mt-2">
-                                        {projet.technologies.map((tech) => (
-                                            <span key={tech} className="inline-block bg-gray-600/40 rounded-full px-3 py-1.5 text-sm text-center mr-2 mb-2">
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
+  const handleProjectChange = (project : typeof projet[0]) => {
+    if (selectedProject.id === project.id) return;
+    
+    setIsTransitioning(true);
+    
+    // Petit délai pour permettre l'animation de sortie
+    setTimeout(() => {
+      setSelectedProject(project);
+      setIsTransitioning(false);
+    }, 200);
+  };
 
-                <Swiper
-                    modules={[Pagination]}
-                    pagination={{ clickable: true }}
-                    spaceBetween={10}
-                    slidesPerView={1}
-                    className="max-w-[800px] w-full"
+  // Variantes d'animation pour les détails du projet
+  const detailsVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      scale: 0.95
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        staggerChildren: 0.1
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      scale: 0.95,
+      transition: {
+        duration: 0.2,
+        ease: "easeIn"
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.3, ease: "easeOut" }
+    }
+  };
+
+  // Variantes pour les technologies
+  const techVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 10 },
+    visible: (i : number) => ({
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.05,
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    })
+  };
+
+  // Variantes pour le carrousel
+  const carouselVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.9,
+      rotateY: 15
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotateY: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.9,
+      rotateY: -15,
+      transition: {
+        duration: 0.3,
+        ease: "easeIn"
+      }
+    }
+  };
+
+  return (
+    <motion.section
+      style={{ background: backgroundIMG }}
+      id="projects"
+      className="py-32 sm:py-32 md:py-32 sm:px-6 lg:px-28 text-white"
+    >
+      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
+        {/* Colonne de gauche */}
+        <div>
+          <motion.h2 
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-6xl font-bold mb-10"
+          >
+            <span className="text-gray-400">Projets</span>
+          </motion.h2>
+
+          {projet.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.2,
+                ease: "easeOut" 
+              }}
+              onClick={() => handleProjectChange(project)}
+              className="cursor-pointer mb-8 group relative"
+            >
+              <motion.div
+                whileHover={{ x: 10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <p className="text-gray-400 text-lg mb-2">
+                  {project.years} <span className="font-bold">{project.place}</span>
+                </p>
+                <motion.h3
+                  className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors duration-300 ${
+                    selectedProject.id === project.id ? 'text-gray-200' : ''
+                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
                 >
-                    {selectedProject.image.map((img, index) => (
-                        <SwiperSlide key={index} className="flex justify-center">
-                            <Image
-                                src={img}
-                                alt={`${selectedProject.title} image ${index + 1}`}
-                                width={800}
-                                height={500}
-                                className="rounded-xl shadow-lg transition-opacity duration-500 ease-in-out object-cover"
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </motion.section>
-    );
-}
+                  {project.title}
+                </motion.h3>
+              </motion.div>
+
+              <AnimatePresence mode="wait">
+                {selectedProject.id === project.id && !isTransitioning && (
+                  <motion.div
+                    key={`details-${project.id}`}
+                    variants={detailsVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="overflow-hidden"
+                  >
+                    <motion.div 
+                      variants={itemVariants}
+                      className="border-b-2 border-gray-200 my-4"
+                    />
+                    
+                    <motion.div variants={itemVariants} className="text-gray-400">
+                      <motion.p variants={itemVariants}>
+                        {project.description}
+                      </motion.p>
+
+                      {project.externalLink && (
+                        <motion.a
+                          variants={itemVariants}
+                          href={project.externalLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-200 hover:text-gray-400 flex items-center gap-2 mt-2"
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <span>{project.message}</span>
+                          <motion.div
+                            whileHover={{ rotate: 12 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <FaExternalLinkAlt />
+                          </motion.div>
+                        </motion.a>
+                      )}
+
+                      {project.Link && (
+                        <motion.a
+                          variants={itemVariants}
+                          href="https://www.lumnpc.fr/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-200 hover:text-gray-400 flex items-center gap-2 mt-2"
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <span>{project.Link}</span>
+                          <motion.div
+                            whileHover={{ rotate: 12 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <Link />
+                          </motion.div>
+                        </motion.a>
+                      )}
+
+                      <motion.div 
+                        variants={itemVariants}
+                        className="flex flex-wrap gap-2 mt-2"
+                      >
+                        {project.technologies.map((tech, i) => (
+                          <motion.span
+                            key={tech}
+                            custom={i}
+                            variants={techVariants}
+                            whileHover={{ 
+                              scale: 1.05,
+                              backgroundColor: "rgba(156, 163, 175, 0.6)" 
+                            }}
+                            transition={{ duration: 0.2 }}
+                            className="inline-block bg-gray-600/40 rounded-full px-3 py-1.5 text-sm text-center mr-2 mb-2 cursor-default"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Colonne de droite : carrousel d'images */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`carousel-${selectedProject.id}`}
+              variants={carouselVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <Swiper
+                modules={[Pagination]}
+                pagination={{ 
+                  clickable: true,
+                  bulletClass: 'swiper-pagination-bullet',
+                  bulletActiveClass: 'swiper-pagination-bullet-active'
+                }}
+                spaceBetween={10}
+                slidesPerView={1}
+                className="max-w-[800px] w-full"
+              >
+                {selectedProject.image.map((img, index) => (
+                  <SwiperSlide key={`${selectedProject.id}-${index}`} className="flex justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ 
+                        duration: 0.5,
+                        delay: index * 0.1,
+                        ease: "easeOut" 
+                      }}
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <Image
+                        src={img}
+                        alt={`${selectedProject.title} image ${index + 1}`}
+                        width={800}
+                        height={500}
+                        className="rounded-xl shadow-lg transition-all duration-300 ease-in-out object-cover hover:shadow-2xl"
+                      />
+                    </motion.div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Indice de scroll amélioré */}
+        <AnimatePresence>
+          {showScrollHint && selectedProject.image.length > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center lg:hidden"
+            >
+              <motion.span
+                animate={{ y: [0, 8, 0] }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 2,
+                  ease: "easeInOut"
+                }}
+                className="block text-sm text-white mb-1 bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm"
+              >
+                Faites défiler
+              </motion.span>
+              <motion.div
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 2,
+                  ease: "easeInOut"
+                }}
+                className="w-1 h-8 bg-white/50 mx-auto rounded-full"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.section>
+  );
+};
 
 export default Projet;
