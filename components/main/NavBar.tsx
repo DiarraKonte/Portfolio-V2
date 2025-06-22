@@ -6,8 +6,9 @@ import Link from 'next/link';
 
 const NavLinks=[
     {name:'Acceuil', link:'#hero'},
-    {name:'Diarra Konte', link:'#about'},
+    {name:'Diarra', link:'#about'},
     {name: 'SAE', link:'#sae'},
+    {name : "stage", link:'#stage'},
     {name:'Skills', link:'#skills'},
     {name:'Experience', link:'#experience'},
     {name:'Projets', link:'#projects'},
@@ -30,7 +31,7 @@ const NavBar = () => {
     <div className='z-50 fixed flex justify-center w-full text-white font-bold'>
 
         <div className="border border-white/20 mt-8 backdrop-blur-3xl rounded-3xl
-                        hidden md:flex items-center justify-between p-2 max-w-[650px] mx-auto">
+                        hidden md:flex items-center justify-between p-2 max-w-[750px] mx-auto">
             <ul className='flex flex-row p-2 space-x-8'>
                 {NavLinks.map((link, index) => (
                     <li key={index} className='transform hover:texte-white/50 transition-all duration-300 ease-in-out'>
