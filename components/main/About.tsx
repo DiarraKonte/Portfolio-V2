@@ -31,29 +31,24 @@ const aboutContent = [
     content: 
   <>
     <p className="text-gray-400 mt-4">
-      Mon entrée en BUT 1 a marqué le début de mes études supérieures dans un domaine qui m'était totalement inconnu. Ne venant pas d'un parcours informatique, mes premiers pas ont été compliqués : je ne maîtrisais ni les outils ni les langages de programmation ni les méthodes.
+      Mon entr&eacute;e en <span className="text-white font-semibold">BUT 1</span> a marqu&eacute; le commencement de mes &eacute;tudes sup&eacute;rieures dans un environnement qui m&rsquo;&eacute;tait totalement inconnu. Ne venant pas d&rsquo;un parcours informatique, mes premiers pas ont &eacute;t&eacute; difficiles : je ne connaissais ni les <span className="text-white font-semibold">outils</span>, ni les <span className="text-white font-semibold">langages de programmation</span>, ni les <span className="text-white font-semibold">m&eacute;thodes</span> que je d&eacute;couvrais n&rsquo;&eacute;taient ma&icirc;tris&eacute;s.
     </p>
     <p className="text-gray-400 mt-2">
-      C'est progressivement, à travers les projets scolaires (SAE) et mes initiatives personnelles, que j'ai découvert l'univers fascinant de l'informatique. Cette immersion graduelle a éveillé en moi une véritable passion pour le développement.
+      C&rsquo;est progressivement &agrave; travers les <span className="text-white font-semibold">projets scolaires (SAE)</span> ainsi que mes projets personnels que j&rsquo;ai d&eacute;couvert que <span className="text-white font-semibold">l&rsquo;informatique</span> &eacute;tait carr&eacute;ment un nouveau monde pour moi, &ccedil;a n&apos;a pas de limite, il ne fait qu&apos;&eacute;voluer et <span className="text-white font-semibold">&ccedil;a me passionne</span>.
+    </p>
+    <p className="text-gray-400 mt-2">Je sens que j&apos;&eacute;volue au fur et &agrave; mesure des semestres</p>
+    <p className="text-gray-400 mt-2">
+      Pendant ces <span className="text-white font-semibold">2 ann&eacute;es</span>, j&apos;ai appris plein de nouvelles <span className="text-white font-semibold">technologies</span> et <span className="text-white font-semibold">langages de programmation</span>, j&apos;en ai aim&eacute; certaines et d&apos;autres que j&apos;ai trouv&eacute; un peu moins int&eacute;ressantes.
     </p>
     <p className="text-gray-400 mt-2">
-      Mon parcours en BUT s'est révélé être un tremplin décisif : j'y ai consolidé mes compétences techniques, affiné ma gestion du temps et développé mon aptitude au travail collaboratif. Ces apprentissages ont posé les bases solides de mon évolution professionnelle.
-    </p>
-    <p className="text-gray-400 mt-2">
-      Au fil de cette formation, j'ai appris à transformer mes erreurs en opportunités d'apprentissage, à mieux cerner mes forces et à capitaliser sur ma capacité d'adaptation rapide aux nouveaux outils technologiques.
-    </p>
-    <p className="text-gray-400 mt-2">
-      Mes expériences de stage et mes projets ont confirmé ma détermination à poursuivre dans le développement, avec l'ambition entrepreneuriale de créer un jour ma propre entreprise dans le secteur IT.
-    </p>
-    <p className="text-gray-400 mt-2">
-      Cette exploration continue de l'informatique et des nouvelles technologies a renforcé deux passions majeures : le développement logiciel et l'intelligence artificielle, domaines qui nourrissent désormais mes aspirations professionnelles.
+      Je ne sais toujours pas dans quel <span className="text-white font-semibold">domaine</span> me sp&eacute;cialiser mais une chose est s&ucirc;re, c&apos;est que je veux faire de <span className="text-white font-semibold">l&apos;informatique</span> !
     </p>
   </>,
   stats: []
 },
   {
     title: "Mon But",
-    content: "En tant qu&apos;étudiant, mon principal objectif est de toucher à tout, que ce soit du front-end ou du back-end. Je veux avoir une vision large de ce que l&apos;informatique, le développement web et l&apos;IA peuvent offrir.",
+    content: <><p>En tant qu&apos;étudiant, mon principal objectif est de toucher à tout, que ce soit du front-end ou du back-end. Je veux avoir une vision large de ce que l&apos;informatique, le développement web et l&apos;IA peuvent offrir.</p></>,
     stats: [
       { value: "8+", label: "Technologies ", color: "text-green-400" },
       { value: "1", label: "Frameworks", color: "text-purple-400" }
@@ -86,9 +81,12 @@ const aboutContent = [
    
   {
     title: "Mes objectifs",
-    content: "Je souhaite devenir un développeur fullstack polyvalent pour un jour pouvoir me lancer en tant que freelance ou créer ma propre entreprise. Je veux découvrir le plus de technologies possibles et me perfectionner dans celles que j'aimerais le plus et pour ce faire j'adorerais travailler sur des projets toujours plus créatifs et innovants.",
+    content: <>
+    <p className="text-gray-400">Après avoir terminé mon BUT, je voudrais me diriger vers <span className="font-bold text-white">un master ou une école d&apos;ingénieurs</span>, pour encore plus me specialiser.</p>
+    <p className="text-gray-400">Je souhaite <span className="font-bold text-white">devenir un développeur fullstack</span> pour un jour pouvoir <span className="font-bold text-white">me lancer en tant que freelance ou créer ma propre entreprise</span>. Je veux <span className="font-bold text-white">découvrir le plus de technologies possibles</span> et me perfectionner dans celles que j&apos;aimerais le plus et pour ce faire j&apos;adorerais travailler sur <span className="font-bold text-white">des projets toujours plus créatifs et innovants</span>.</p>
+    </>,
     stats: [
-      { value: "∞", label: "Envie d'apprendre", color: "text-orange-400" },
+      { value: "∞", label: "Envie d&apos;apprendre", color: "text-orange-400" },
       { value: "100%", label: "Motivation", color: "text-indigo-400" }
     ]
   }

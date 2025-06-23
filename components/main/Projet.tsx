@@ -12,24 +12,36 @@ import { Link } from 'lucide-react';
 // Liste de couleurs cycliques pour le fond
 const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
-const projet = [
+type Project = {
+  id: number;
+  place: string;
+  title: string;
+  description: string;
+  image: string[];
+  years: string;
+  color: string;
+  message: string;
+  technologies: string[];
+  externalLink?: string;
+  Link?: string;
+};
+
+const projet: Project[] = [
   {
-    id: 2,
-    year: 2023,
+    id: 1,
     place: "",
-    title: "Portfolio next.js",
-    description: "Mon portfolio personnel, réalisé avec Next.js et Tailwind CSS. Il présente mes projets, mes compétences et mon parcours professionnel.",
-    image: ["/portfolio.png"],
-    years: "Mai 2025 ",
+    title: "Calculatrice Java(SAE 2.01)",
+    description: "Une calculatrice simple réalisée en Java.",
+    image: ["/Java.png", "/Java1.png", "/Java2.png"],
+    years: "avril 2024 ",
     color: "#1dd396",
     message: "Voir code GitHub",
-    technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Git", "GitHub"],
-    externalLink: 'https://github.com/DiarraKonte/Portfolio-V2' 
+    technologies: ["Java", "Git", "GitHub"],
+    externalLink: 'https://github.com/DiarraKonte/SAE-Calculatrice' 
   },
   {
-    id: 3,
+    id: 2,
     place: "",
-    year: 2023,
     title: "Football Story",
     description: "Un site retraçant l'histoire du football, ses grands joueurs et ses moments historiques. J'ai entrepris ce projet pour parler de ma passion pour le football.",
     image: ["/FS.png", "/FS2.png", "/FS3.png", "/FS4.png"],
@@ -40,8 +52,7 @@ const projet = [
     externalLink: "https://diarrakonte.github.io/FootballStory/", 
   },
   {
-    id: 4,
-    year: 2023,
+    id: 3,
     place: "IUT Sorbonne Paris Nord",
     title: "Plateforme de discussion(SAE 3.01)",
     description: "Développement, dans le cadre d'une SAE (Situation d'Apprentissage et d'Évaluation), d'une application de messagerie et d'annotation de messages en temps réel. Le projet consistait à permettre aux utilisateurs de commenter et classer des messages, puis à collecter les annotations dans une base de données pour analyse.",
@@ -53,8 +64,19 @@ const projet = [
     externalLink: "https://github.com/Cheick6/SAE_S1" 
   },
   {
+    id: 4,
+    place: "",
+    title: "Portfolio next.js",
+    description: "Mon portfolio personnel, réalisé avec Next.js et Tailwind CSS. Il présente mes projets, mes compétences et mon parcours professionnel.",
+    image: ["/portfolio.png"],
+    years: "Mai 2025 ",
+    color: "#1dd396",
+    message: "Voir code GitHub",
+    technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Git", "GitHub"],
+    externalLink: 'https://github.com/DiarraKonte/Portfolio-V2' 
+  },
+  {
     id: 5,
-    year: 2024,
     place: "",
     title: "LumnPC",
     description: "Site proposant des modules pour aider les débutants à choisir leur PC gaming, avec un système de compte et un moyen de paiement par Stripe.",
@@ -69,9 +91,11 @@ const projet = [
 ];
 
 const Projet = () => {
-  const [selectedProject, setSelectedProject] = useState(projet[0]);
+  const [selectedProject, setSelectedProject] = useState<Project>(projet[0]);
   const [showScrollHint, setShowScrollHint] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Valeur animée pour la couleur
   const color = useMotionValue(COLORS[0]);
@@ -96,7 +120,7 @@ const Projet = () => {
     };
   }, [color]);
 
-  const handleProjectChange = (project) => {
+  const handleProjectChange = (project: Project) => {
     if (selectedProject.id === project.id) return;
     setIsTransitioning(true);
     setTimeout(() => {
@@ -212,7 +236,7 @@ const Projet = () => {
                     {project.Link && (
                       <motion.a
                         variants={itemVariants}
-                        href="https://www.lumnpc.fr/" 
+                        href="https://infobusiness-pc.vercel.app/" 
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-200 hover:text-gray-400 flex items-center gap-2 mt-2 text-sm"
@@ -256,32 +280,37 @@ const Projet = () => {
               exit="exit"
               className="w-full"
             >
-              <Swiper
-                modules={[Pagination]}
-                pagination={{ clickable: true }}
-                spaceBetween={10}
-                slidesPerView={1}
-                className="w-full"
-              >
-                {selectedProject.image.map((img, index) => (
-                  <SwiperSlide key={`${selectedProject.id}-${index}`} className="flex justify-center">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <Image
-                        src={img}
-                        alt={`${selectedProject.title} image ${index + 1}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto max-h-[400px] object-contain rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl"
-                      />
-                    </motion.div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+            <Swiper
+              modules={[Pagination]}
+              pagination={{ clickable: true }}
+              spaceBetween={10}
+              slidesPerView={1}
+              className="w-full"
+            >
+              {selectedProject.image.map((img, index) => (
+                <SwiperSlide
+                  key={`${selectedProject.id}-${index}`}
+                  className="flex justify-center cursor-pointer"
+                  onClick={() => setSelectedImage(img)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${selectedProject.title} image ${index + 1}`}
+                      width={600}
+                      height={400}
+                      className="w-full h-auto max-h-[400px] object-contain rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl"
+                    />
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
             </motion.div>
           </AnimatePresence>
 
@@ -310,6 +339,21 @@ const Projet = () => {
               </motion.div>
             )}
           </AnimatePresence>
+          {selectedImage && (
+            <div
+              className="fixed inset-0 z-50 bg-black bg-opacity-90 flex justify-center items-center cursor-pointer"
+              onClick={() => setSelectedImage(null)}
+            >
+              <Image
+                src={selectedImage}
+                alt="Image agrandie"
+                width={1000}
+                height={800}
+                className="object-contain max-h-full max-w-full rounded-lg"
+              />
+            </div>
+          )}
+
         </div>
       </div>
     </motion.section>

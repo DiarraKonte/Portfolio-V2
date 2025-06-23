@@ -8,7 +8,7 @@ const NavLinks=[
     {name:'Acceuil', link:'#hero'},
     {name:'Diarra', link:'#about'},
     {name: 'SAE', link:'#sae'},
-    {name : "stage", link:'#stage'},
+    {name : "Stage", link:'#stage'},
     {name:'Skills', link:'#skills'},
     {name:'Experience', link:'#experience'},
     {name:'Projets', link:'#projects'},
