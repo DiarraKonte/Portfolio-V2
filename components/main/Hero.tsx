@@ -52,7 +52,7 @@ const Hero = () => {
                 >
                     <Image
                         src="/Photmoi.jpg" // Mettez ici le chemin vers votre image dans /public/
-                        alt="Diarra Konté - Photo de profil"
+                        alt="Diarra Konte - Photo de profil"
                         width={160}
                         height={160}
                         className="w-full h-full object-cover"
@@ -72,7 +72,7 @@ const Hero = () => {
                     Je suis,
                 </motion.h1>
                 <h1 className="max-w-3xl bg-gradient-to-br from-white to-gray-400 bg-clip-text font-black leading-tight text-transparent sm:text-3xl md:text-6xl">
-                    Diarra Konté
+                    Diarra Konte
                 </h1>
                 <span className="mb-1.5 inline-block rounded-full bg-gray-600/40 px-3 py-1.5 text-sm text-center">
                     Étudiant en Informatique, à la recherche d&apos;une
