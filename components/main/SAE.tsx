@@ -15,7 +15,7 @@ const saeContent = [
         </p>
         <br />
         <p className="text-gray-400">
-          Les <span className="font-bold text-white">Situations d’Apprentissage et d’Évaluation</span> (SAE) sont des projets de situation réelle d’enseignement et d’apprentissage axé sur la validation de plusieurs de ces compétences, et ce, au sein d’un même projet. Par exemple un projet de développement d’application fait travailler la compétence, tout à la fois compétence 1 (réalisation), compétence 4 (gestion des données), compétence 6 (le travail en équipe).
+          Les <span className="font-bold text-white">Situations d’Apprentissage et d’Évaluation</span> (SAE) sont des projets de situation réelle d’enseignement et d’apprentissage axé sur la validation de plusieurs de ces compétences. Par exemple un projet de développement d’application fait travailler la compétence, tout à la fois compétence 1 (réalisation), compétence 4 (gestion des données), compétence 6 (le travail en équipe).
         </p>
         <br />
         <p className="text-gray-400">
