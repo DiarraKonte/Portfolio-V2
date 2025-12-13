@@ -51,7 +51,7 @@ const Hero = () => {
                     className="mb-8 rounded-full overflow-hidden w-32 h-32 sm:w-40 sm:h-40 border-4 border-white/20 shadow-xl"
                 >
                     <Image
-                        src="/Photmoi.jpg" // Mettez ici le chemin vers votre image dans /public/
+                        src="/Photmoi.jpg"
                         alt="Diarra Konte - Photo de profil"
                         width={160}
                         height={160}
@@ -101,7 +101,7 @@ const Hero = () => {
                     className="flex w-fit items-center gap-2 rounded-full px-4 py-2"
                     onClick={() => {
                         const link = document.createElement('a');
-                        link.href = '/MONCV-ATS.pdf';
+                        link.href = '/CV.pdf';
                         link.download = 'CV_Diarra_Konte.pdf';
                         link.click();
                     }}
