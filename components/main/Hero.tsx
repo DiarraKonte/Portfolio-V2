@@ -44,14 +44,14 @@ const Hero = () => {
         >
             <div className="z-10 flex flex-col items-center text-center">
                 {/* Photo de profil */}
-                <motion.div 
+                <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="mb-8 rounded-full overflow-hidden w-32 h-32 sm:w-40 sm:h-40 border-4 border-white/20 shadow-xl"
                 >
                     <Image
-                        src="/Photmoi.jpg"
+                        src="/PhotoCV2.png"
                         alt="Diarra Konte - Photo de profil"
                         width={160}
                         height={160}
@@ -112,10 +112,10 @@ const Hero = () => {
 
                 {/* Réseaux sociaux */}
                 <div className="mt-6 flex gap-6 text-3xl">
-                    <a href="https://github.com/diarrakonte"  target="_blank" rel="noopener noreferrer" className='hover:text-gray-400 transition-colors'>
+                    <a href="https://github.com/diarrakonte" target="_blank" rel="noopener noreferrer" className='hover:text-gray-400 transition-colors'>
                         <FaGithub />
                     </a>
-                    <a href="https://www.linkedin.com/in/diarra-konte-4a60762aa/"  target="_blank" rel="noopener noreferrer" className='hover:text-gray-400 transition-colors'>
+                    <a href="https://www.linkedin.com/in/diarra-konte-4a60762aa/" target="_blank" rel="noopener noreferrer" className='hover:text-gray-400 transition-colors'>
                         <FaLinkedin />
                     </a>
                 </div>
