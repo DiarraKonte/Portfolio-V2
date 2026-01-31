@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useMotionTemplate, animate } from 'framer-motion';
+import { motion, animate } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+
 
 const saeContent = [
   {
@@ -24,7 +24,7 @@ const saeContent = [
       </>
     ),
     projects: [
-     
+
     ]
   },
   {
@@ -53,7 +53,7 @@ const saeContent = [
     description: (
       <>
         <p className="text-gray-400">
-          Voici un résumé des <span className="font-bold text-white">compétences développées</span> au cours des SAE 
+          Voici un résumé des <span className="font-bold text-white">compétences développées</span> au cours des SAE
           et projets réalisés dans le cadre de mon BUT Informatique.
         </p>
       </>
@@ -95,34 +95,21 @@ const saeContent = [
 
 const SAE = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const color = useMotionValue(COLORS[0]);
-  
-  useEffect(() => {
-    const animation = animate(color, COLORS, {
-      ease: "easeInOut",
-      duration: 10,
-      repeat: Infinity,
-      repeatType: "mirror"
-    });
-    return () => animation.stop();
-  }, [color]);
 
-  const background = useMotionTemplate`radial-gradient(170% 120% at 50% 100%, #000 30%, ${color})`;
-  
+
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % saeContent.length);
   };
-  
+
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + saeContent.length) % saeContent.length);
   };
 
   const currentContent = saeContent[currentIndex];
-  
+
   return (
     <motion.section
       id="sae"
-      style={{ background }}
       className="relative min-h-screen py-24 px-4 text-gray-200"
     >
       <div className="max-w-6xl mx-auto">
@@ -154,23 +141,23 @@ const SAE = () => {
             }
           >
             {currentContent.projects.map((project, idx) => {
-  const card = (
-    <motion.div
-      key={idx}
-      whileHover={{ y: -5 }}
-      className="p-6 bg-black/20 rounded-xl backdrop-blur-sm border border-white/10 cursor-pointer"
-    >
-      <h3 className="text-2xl font-bold text-[#13FFAA]">{project.title}</h3>
-      <p className="text-lg mt-2">{project.subtitle}</p>
-      <p className="text-gray-400 mt-4">{project.details}</p>
-    </motion.div>
-  );
-  return currentContent.title === "Mes Projets Académiques(SAE)"
-    ? <a href="#projects" key={idx} style={{textDecoration: 'none'}}>{card}</a>
-    : card;
-})}
+              const card = (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -5 }}
+                  className="p-6 bg-black/20 rounded-xl backdrop-blur-sm border border-white/10 cursor-pointer"
+                >
+                  <h3 className="text-2xl font-bold text-[#13FFAA]">{project.title}</h3>
+                  <p className="text-lg mt-2">{project.subtitle}</p>
+                  <p className="text-gray-400 mt-4">{project.details}</p>
+                </motion.div>
+              );
+              return currentContent.title === "Mes Projets Académiques(SAE)"
+                ? <a href="#projects" key={idx} style={{ textDecoration: 'none' }}>{card}</a>
+                : card;
+            })}
           </motion.div>
-          
+
           <div className="flex justify-center items-center space-x-16 mt-12">
             <button
               onClick={prevSlide}
@@ -179,7 +166,7 @@ const SAE = () => {
             >
               <ArrowLeft size={24} />
             </button>
-            
+
             <div className="flex space-x-2">
               {saeContent.map((_, idx) => (
                 <button
@@ -190,7 +177,7 @@ const SAE = () => {
                 />
               ))}
             </div>
-            
+
             <button
               onClick={nextSlide}
               className="p-4 bg-white/10 rounded-full hover:bg-white/20 transition-colors duration-300"

@@ -1,14 +1,15 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useMotionValue, useMotionTemplate, motion, animate, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import 'swiper/css/navigation';
+import { Pagination, Navigation } from 'swiper/modules';
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+
 
 type Experience = {
   id: number;
@@ -72,7 +73,7 @@ const experiences: Experience[] = [
     color: "#FFFFFF",
     message: "Voir code GitHub",
     technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux", "I18N", "ANT Design", "Git", "GitHub", "Swagger", "Méthodologie Agile"],
-    externalLink: "https://github.com/DiarraKonte/AriMayi-US-720/tree/main" 
+    externalLink: "https://github.com/DiarraKonte/AriMayi-US-720/tree/main"
   }
 ];
 
@@ -83,25 +84,7 @@ const Experience = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const color = useMotionValue(COLORS[0]);
-  const backgroundIMG = useMotionTemplate`radial-gradient(140% 125% at 50% 0%, #000 40%, ${color} 100%)`;
 
-  useEffect(() => {
-    const animation = animate(color, COLORS, {
-      ease: "easeInOut",
-      duration: 12,
-      repeat: Infinity,
-      repeatType: "mirror"
-    });
-
-    setShowScrollHint(true);
-    const timer = setTimeout(() => setShowScrollHint(false), 3000);
-
-    return () => {
-      animation.stop();
-      clearTimeout(timer);
-    };
-  }, [color]);
 
   const handleProjectChange = (exp: Experience) => {
     if (selectedProject.id === exp.id) return;
@@ -119,7 +102,6 @@ const Experience = () => {
 
   return (
     <motion.section
-      style={{ background: backgroundIMG }}
       id="experience"
       className="py-16 sm:py-24 md:py-32 px-4 text-white"
     >
@@ -135,68 +117,69 @@ const Experience = () => {
             <span className="text-gray-400">Expériences</span>
           </motion.h2>
 
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
-              onClick={() => handleProjectChange(exp)}
-              className="cursor-pointer mb-8 group relative"
-            >
-              <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
-                <p className="text-gray-400 text-sm sm:text-lg mb-2">
-                  {exp.years}, <span className="font-bold">{exp.place}</span>
-                </p>
-                <motion.h3
-                  className={`text-xl sm:text-3xl font-semibold group-hover:text-gray-400 transition-colors duration-300 ${selectedProject.id === exp.id ? 'text-gray-200' : ''}`}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {exp.title}
-                </motion.h3>
-              </motion.div>
+          <div className="relative border-l-2 border-gray-800 ml-3 md:ml-6 pl-8 md:pl-12 space-y-12">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
+                onClick={() => handleProjectChange(exp)}
+                className="cursor-pointer group relative"
+              >
+                {/* Timeline Dot */}
+                <div className={`absolute -left-[41px] md:-left-[59px] top-1 w-5 h-5 rounded-full border-4 border-black transition-colors duration-300 ${selectedProject.id === exp.id ? 'bg-purple-500 scale-125' : 'bg-gray-700 group-hover:bg-gray-500'}`} />
 
-              <AnimatePresence mode="wait">
-                {selectedProject.id === exp.id && !isTransitioning && (
-                  <motion.div variants={detailsVariants} initial="hidden" animate="visible" exit="exit" className="overflow-hidden">
-                    <motion.div variants={itemVariants} className="border-b border-gray-600 my-4" />
-                    <motion.p variants={itemVariants} className="text-gray-300 text-sm sm:text-base">
-                      {exp.description}
-                    </motion.p>
-                    {exp.externalLink && (
-                      <motion.a
-                        variants={itemVariants}
-                        href={exp.externalLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-200 hover:text-gray-400 flex items-center gap-2 mt-2 text-sm"
-                        whileHover={{ x: 5 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <span>{exp.message}</span>
-                        <FaExternalLinkAlt />
-                      </motion.a>
-                    )}
-                    <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mt-2">
-                      {exp.technologies.map((tech, i) => (
-                        <motion.span
-                          key={tech}
-                          custom={i}
-                          variants={techVariants}
-                          whileHover={{ scale: 1.05, backgroundColor: "rgba(156, 163, 175, 0.6)" }}
-                          transition={{ duration: 0.2 }}
-                          className="inline-block bg-gray-600/40 rounded-full px-2 py-1 text-xs sm:text-sm text-center"
+                <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                  <p className="text-gray-400 text-sm sm:text-lg mb-1 flex items-center gap-2">
+                    <span className="text-purple-400 font-mono">{exp.years}</span>
+                    <span className="w-1 h-1 bg-gray-600 rounded-full"></span>
+                    <span className="font-bold text-gray-300">{exp.place}</span>
+                  </p>
+                  <motion.h3
+                    className={`text-xl sm:text-3xl font-bold mb-2 transition-colors duration-300 ${selectedProject.id === exp.id ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}
+                  >
+                    {exp.title}
+                  </motion.h3>
+                </motion.div>
+
+                <AnimatePresence mode="wait">
+                  {selectedProject.id === exp.id && !isTransitioning && (
+                    <motion.div variants={detailsVariants} initial="hidden" animate="visible" exit="exit" className="overflow-hidden">
+                      <motion.p variants={itemVariants} className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+                        {exp.description}
+                      </motion.p>
+                      {exp.externalLink && (
+                        <motion.a
+                          variants={itemVariants}
+                          href={exp.externalLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-purple-400 hover:text-purple-300 flex items-center gap-2 text-sm font-medium mb-4"
+                          whileHover={{ x: 5 }}
                         >
-                          {tech}
-                        </motion.span>
-                      ))}
+                          <span>{exp.message}</span>
+                          <FaExternalLinkAlt size={12} />
+                        </motion.a>
+                      )}
+                      <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, i) => (
+                          <motion.span
+                            key={tech}
+                            custom={i}
+                            variants={techVariants}
+                            className="inline-block bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-xs text-gray-300 hover:bg-white/10 transition-colors"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Colonne de droite */}
@@ -211,8 +194,12 @@ const Experience = () => {
               className="w-full"
             >
               <Swiper
-                modules={[Pagination]}
+                modules={[Pagination, Navigation]}
                 pagination={{ clickable: true }}
+                navigation={{
+                  prevEl: '.swiper-button-prev-custom-exp',
+                  nextEl: '.swiper-button-next-custom-exp',
+                }}
                 spaceBetween={10}
                 slidesPerView={1}
                 className="w-full"
@@ -220,21 +207,47 @@ const Experience = () => {
                 {selectedProject.image.map((img, index) => (
                   <SwiperSlide
                     key={`${selectedProject.id}-${index}`}
-                    className="flex justify-center cursor-pointer"
-                    onClick={() => setSelectedImage(img)}
+                    className="flex justify-center"
                   >
-                    <Image
-                      src={img}
-                      alt={`${selectedProject.title} image ${index + 1}`}
-                      width={500}
-                      height={300}
-                      className="rounded-lg object-contain"
-                    />
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                      onClick={() => setSelectedImage(img)}
+                      className="relative w-full rounded-2xl border border-white/10 p-6 min-h-[400px] flex items-center justify-center cursor-pointer"
+                      style={{
+                        background: `linear-gradient(135deg, ${selectedProject.color}10, rgba(255,255,255,0.02))`
+                      }}
+                    >
+                      <Image
+                        src={img}
+                        alt={`${selectedProject.title} image ${index + 1}`}
+                        width={600}
+                        height={400}
+                        className="w-full h-auto max-h-[400px] object-contain rounded-lg"
+                      />
+                    </motion.div>
                   </SwiperSlide>
                 ))}
               </Swiper>
             </motion.div>
           </AnimatePresence>
+
+          {/* Custom Navigation Arrows - Only show when more than one image */}
+          {selectedProject.image.length > 1 && (
+            <>
+              <button className="swiper-button-prev-custom-exp absolute left-2 top-[60%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group">
+                <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button className="swiper-button-next-custom-exp absolute right-2 top-[60%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group">
+                <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </>
+          )}
 
           {/* Indice défilement mobile */}
           <AnimatePresence>
@@ -246,13 +259,7 @@ const Experience = () => {
                 transition={{ duration: 0.5 }}
                 className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center lg:hidden"
               >
-                <motion.span
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                  className="block text-sm text-white mb-1 bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm"
-                >
-                  Faites défiler
-                </motion.span>
+
                 <motion.div
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

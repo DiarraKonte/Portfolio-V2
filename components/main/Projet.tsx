@@ -1,16 +1,18 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useMotionValue, useMotionTemplate, motion, animate, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
-import { FaExternalLinkAlt } from "react-icons/fa";
+import 'swiper/css/navigation';
+import { Pagination, Navigation } from 'swiper/modules';
+import { FaExternalLinkAlt, FaJava } from "react-icons/fa";
+import { SiNextdotjs, SiHtml5, SiPhp, SiReact, SiFlutter } from "react-icons/si";
 import { Link } from 'lucide-react';
 
 // Liste de couleurs cycliques pour le fond
-const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+
 
 type Project = {
   id: number;
@@ -25,6 +27,7 @@ type Project = {
   externalLink?: string;
   Link?: string;
   demoUrl?: string;
+  icon?: React.ComponentType<{ className: string }>;
 };
 
 const projet: Project[] = [
@@ -38,7 +41,8 @@ const projet: Project[] = [
     color: "#1dd396",
     message: "Voir code GitHub",
     technologies: ["Java", "Git", "GitHub"],
-    externalLink: 'https://github.com/DiarraKonte/SAE-Calculatrice'
+    externalLink: 'https://github.com/DiarraKonte/SAE-Calculatrice',
+    icon: FaJava
   },
   {
     id: 2,
@@ -51,6 +55,7 @@ const projet: Project[] = [
     message: "Voir le site",
     technologies: ["HTML", "CSS", "Git", "GitHub"],
     externalLink: "https://diarrakonte.github.io/FootballStory/",
+    icon: SiHtml5
   },
   {
     id: 3,
@@ -62,7 +67,8 @@ const projet: Project[] = [
     color: "#1E67C6",
     message: "Voir code GitHub",
     technologies: ["Php", "Node.js", "WebSockets", "Ratchet", "MVC", "GitHub", "MySQL", "PostgreSQL", "XAMPP", "PhpMyAdmin", "JavaScript"],
-    externalLink: "https://github.com/Cheick6/SAE_S1"
+    externalLink: "https://github.com/Cheick6/SAE_S1",
+    icon: SiPhp
   },
   {
     id: 4,
@@ -74,7 +80,8 @@ const projet: Project[] = [
     color: "#1dd396",
     message: "Voir code GitHub",
     technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Git", "GitHub"],
-    externalLink: 'https://github.com/DiarraKonte/Portfolio-V2'
+    externalLink: 'https://github.com/DiarraKonte/Portfolio-V2',
+    icon: SiNextdotjs
   },
   {
     id: 5,
@@ -88,7 +95,8 @@ const projet: Project[] = [
     Link: "Le site",
     demoUrl: "https://infobusiness-pc.vercel.app/",
     technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Stripe", "Git", "GitHub", "Vercel", "OVH", "Resend", "Firebase", "Firestore", "GoogleOAuth"],
-    externalLink: 'https://github.com/DiarraKonte/Infobusiness-PC'
+    externalLink: 'https://github.com/DiarraKonte/Infobusiness-PC',
+    icon: SiReact
   },
   {
     id: 6,
@@ -96,13 +104,14 @@ const projet: Project[] = [
     title: "OtakuGO",
     description: "Une application mobile qui te recommande des animes",
     image: ["/Otaku.png", "/Otaku1.png", "/Otaku2.png", "/Otaku3.png", "/Otaku4.png", "/Otaku5.png", "/Otaku6.png", "/Otaku7.png", "/Otaku8.png"],
-    years: "Janvier 2026 ",
+    years: "Octobre 2025 - Janvier 2026 ",
     color: "#e6d8ca",
     message: "Voir le code GitHub",
     Link: "Voir la démo",
     demoUrl: "https://diarrakonte.github.io/OtakuGO/",
     technologies: ["Flutter", "Dart", "Git", "GitHub", "GitHub Actions", "JSON", "Trello"],
-    externalLink: 'https://github.com/DiarraKonte/OtakuGO'
+    externalLink: 'https://github.com/DiarraKonte/OtakuGO',
+    icon: SiFlutter
   }
 ];
 
@@ -114,27 +123,7 @@ const Projet = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Valeur animée pour la couleur
-  const color = useMotionValue(COLORS[0]);
 
-  // Dégradé animé basé sur la couleur
-  const backgroundIMG = useMotionTemplate`radial-gradient(170% 120% at 50% 100%, #000 30%, ${color})`;
-
-  useEffect(() => {
-    const animation = animate(color, COLORS, {
-      ease: "easeInOut",
-      duration: 12,
-      repeat: Infinity,
-      repeatType: "mirror"
-    });
-
-    setShowScrollHint(true);
-    const timer = setTimeout(() => setShowScrollHint(false), 3000);
-
-    return () => {
-      animation.stop();
-      clearTimeout(timer);
-    };
-  }, [color]);
 
   const handleProjectChange = (project: Project) => {
     if (selectedProject.id === project.id) return;
@@ -180,7 +169,6 @@ const Projet = () => {
 
   return (
     <motion.section
-      style={{ background: backgroundIMG }}
       id="projects"
       className="py-16 sm:py-24 md:py-32 px-4 text-white"
     >
@@ -196,92 +184,96 @@ const Projet = () => {
             <span className="text-gray-400">Projets</span>
           </motion.h2>
 
-          {projet.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
-              onClick={() => handleProjectChange(project)}
-              className="cursor-pointer mb-8 group relative"
-            >
-              <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
-                <p className="text-gray-400 text-sm sm:text-lg mb-2">
-                  {project.years} <span className="font-bold">{project.place}</span>
-                </p>
-                <motion.h3
-                  className={`text-xl sm:text-3xl font-semibold group-hover:text-gray-400 transition-colors duration-300 ${selectedProject.id === project.id ? 'text-gray-200' : ''
-                    }`}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {project.title}
-                </motion.h3>
-              </motion.div>
+          <div className="relative border-l-2 border-gray-800 ml-3 md:ml-6 pl-8 md:pl-12 space-y-12">
+            {projet.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
+                onClick={() => handleProjectChange(project)}
+                className="cursor-pointer group relative"
+              >
+                {/* Timeline Dot */}
+                <div className={`absolute -left-[41px] md:-left-[59px] top-1 w-5 h-5 rounded-full border-4 border-black transition-colors duration-300 ${selectedProject.id === project.id ? 'bg-purple-500 scale-125' : 'bg-gray-700 group-hover:bg-gray-500'}`} />
 
-              <AnimatePresence mode="wait">
-                {selectedProject.id === project.id && !isTransitioning && (
-                  <motion.div
-                    variants={detailsVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="overflow-hidden"
+                <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                  <p className="text-gray-400 text-sm sm:text-lg mb-1 flex items-center gap-2">
+                    <span className="text-purple-400 font-mono">{project.years}</span>
+                    {project.place && (
+                      <>
+                        <span className="w-1 h-1 bg-gray-600 rounded-full"></span>
+                        <span className="font-bold text-gray-300">{project.place}</span>
+                      </>
+                    )}
+                  </p>
+                  <motion.h3
+                    className={`text-xl sm:text-3xl font-bold mb-2 transition-colors duration-300 flex items-center gap-3 ${selectedProject.id === project.id ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}
                   >
-                    <motion.div variants={itemVariants} className="border-b border-gray-600 my-4" />
-                    <motion.p variants={itemVariants} className="text-gray-300 text-sm sm:text-base">
-                      {project.description}
-                    </motion.p>
+                    {project.icon && React.createElement(project.icon, { className: "text-xl sm:text-2xl" })}
+                    {project.title}
+                  </motion.h3>
+                </motion.div>
 
-                    {project.externalLink && (
-                      <motion.a
-                        variants={itemVariants}
-                        href={project.externalLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-200 hover:text-gray-400 flex items-center gap-2 mt-2 text-sm"
-                        whileHover={{ x: 5 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <span>{project.message}</span>
-                        <FaExternalLinkAlt />
-                      </motion.a>
-                    )}
+                <AnimatePresence mode="wait">
+                  {selectedProject.id === project.id && !isTransitioning && (
+                    <motion.div
+                      variants={detailsVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="overflow-hidden"
+                    >
+                      <motion.p variants={itemVariants} className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+                        {project.description}
+                      </motion.p>
 
-                    {project.Link && project.demoUrl && (
-                      <motion.a
-                        variants={itemVariants}
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-200 hover:text-gray-400 flex items-center gap-2 mt-2 text-sm"
-                        whileHover={{ x: 5 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <span>{project.Link}</span>
-                        <Link size={14} />
-                      </motion.a>
-                    )}
-
-                    <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mt-2">
-                      {project.technologies.map((tech, i) => (
-                        <motion.span
-                          key={tech}
-                          custom={i}
-                          variants={techVariants}
-                          whileHover={{ scale: 1.05, backgroundColor: "rgba(156, 163, 175, 0.6)" }}
-                          transition={{ duration: 0.2 }}
-                          className="inline-block bg-gray-600/40 rounded-full px-2 py-1 text-xs sm:text-sm text-center"
+                      {project.externalLink && (
+                        <motion.a
+                          variants={itemVariants}
+                          href={project.externalLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-purple-400 hover:text-purple-300 flex items-center gap-2 text-sm font-medium mb-2"
+                          whileHover={{ x: 5 }}
                         >
-                          {tech}
-                        </motion.span>
-                      ))}
+                          <span>{project.message}</span>
+                          <FaExternalLinkAlt size={12} />
+                        </motion.a>
+                      )}
+
+                      {project.Link && project.demoUrl && (
+                        <motion.a
+                          variants={itemVariants}
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-purple-400 hover:text-purple-300 flex items-center gap-2 text-sm font-medium mb-4"
+                          whileHover={{ x: 5 }}
+                        >
+                          <span>{project.Link}</span>
+                          <Link size={14} />
+                        </motion.a>
+                      )}
+
+                      <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, i) => (
+                          <motion.span
+                            key={tech}
+                            custom={i}
+                            variants={techVariants}
+                            className="inline-block bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-xs text-gray-300 hover:bg-white/10 transition-colors"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Colonne de droite : carrousel d'images */}
@@ -296,8 +288,12 @@ const Projet = () => {
               className="w-full"
             >
               <Swiper
-                modules={[Pagination]}
+                modules={[Pagination, Navigation]}
                 pagination={{ clickable: true }}
+                navigation={{
+                  prevEl: '.swiper-button-prev-custom',
+                  nextEl: '.swiper-button-next-custom',
+                }}
                 spaceBetween={10}
                 slidesPerView={1}
                 className="w-full"
@@ -305,29 +301,47 @@ const Projet = () => {
                 {selectedProject.image.map((img, index) => (
                   <SwiperSlide
                     key={`${selectedProject.id}-${index}`}
-                    className="flex justify-center cursor-pointer"
-                    onClick={() => setSelectedImage(img)}
+                    className="flex justify-center"
                   >
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-                      whileHover={{ scale: 1.02 }}
+                      onClick={() => setSelectedImage(img)}
+                      className="relative w-full rounded-2xl border border-white/10 p-6 min-h-[400px] flex items-center justify-center cursor-pointer"
+                      style={{
+                        background: `linear-gradient(135deg, ${selectedProject.color}10, rgba(255,255,255,0.02))`
+                      }}
                     >
                       <Image
                         src={img}
                         alt={`${selectedProject.title} image ${index + 1}`}
                         width={600}
                         height={400}
-                        className="w-full h-auto max-h-[400px] object-contain rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl"
+                        className="w-full h-auto max-h-[400px] object-contain rounded-lg"
                       />
                     </motion.div>
                   </SwiperSlide>
                 ))}
               </Swiper>
-
             </motion.div>
           </AnimatePresence>
+
+          {/* Custom Navigation Arrows - Only show when more than one image */}
+          {selectedProject.image.length > 1 && (
+            <>
+              <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group">
+                <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group">
+                <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </>
+          )}
 
           {/* Indice de scroll sur mobile uniquement */}
           <AnimatePresence>
@@ -339,13 +353,6 @@ const Projet = () => {
                 transition={{ duration: 0.5 }}
                 className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center lg:hidden"
               >
-                <motion.span
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                  className="block text-sm text-white mb-1 bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm"
-                >
-                  Faites défiler
-                </motion.span>
                 <motion.div
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

@@ -8,20 +8,20 @@ const Contact = () => {
   const [hoveredPhone, setHoveredPhone] = useState(false);
 
   return (
-    <motion.section 
-      id="contact" 
-      className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 text-white"
+    <motion.section
+      id="contact"
+      className="py-32 sm:py-40 md:py-48 px-4 sm:px-6 lg:px-8 text-white min-h-screen flex items-center"
     >
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16">
         {/* Informations de contact */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="space-y-8"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -30,7 +30,7 @@ const Contact = () => {
             Entrez en <span className="text-gray-500">contact</span>
           </motion.h2>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -41,7 +41,7 @@ const Contact = () => {
               <p className="text-base sm:text-lg text-gray-300 flex items-center gap-2">
                 <FaPhone className="text-gray-400" /> Téléphone
               </p>
-              <motion.a 
+              <motion.a
                 href="tel:+33751458685"
                 aria-label="Appeler Diarra Konté"
                 className="text-xl sm:text-2xl font-bold text-gray-200 hover:text-gray-400 transition-colors duration-300 flex items-center gap-2"
@@ -65,7 +65,7 @@ const Contact = () => {
               <p className="text-base sm:text-lg text-gray-300 flex items-center gap-2">
                 <FaEnvelope className="text-gray-400" /> Email
               </p>
-              <motion.a 
+              <motion.a
                 href="mailto:diarrakontepro@gmail.com"
                 aria-label="Envoyer un email à Diarra Konté"
                 className="text-xl sm:text-2xl font-bold text-gray-200 hover:text-gray-400 transition-colors duration-300 flex items-center gap-2"
@@ -101,7 +101,7 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="w-full h-[300px] sm:h-[400px] lg:h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10"
         >
-          <iframe 
+          <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d41928.231509860525!2d2.2222179409417055!3d48.94368897214213!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66664dfcb055b%3A0x40b82c3688b36d0!2s95100%20Argenteuil!5e0!3m2!1sfr!2sfr!4v1745791381862!5m2!1sfr!2sfr"
             width="100%"
             height="100%"
