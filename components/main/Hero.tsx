@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { animate, useMotionValue, useMotionTemplate, motion } from 'framer-motion';
 import { FiArrowDownRight } from 'react-icons/fi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';

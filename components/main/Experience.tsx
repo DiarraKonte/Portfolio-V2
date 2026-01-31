@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -80,7 +80,6 @@ const experiences: Experience[] = [
 
 const Experience = () => {
   const [selectedProject, setSelectedProject] = useState(experiences[0]);
-  const [showScrollHint, setShowScrollHint] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -251,7 +250,7 @@ const Experience = () => {
 
           {/* Indice défilement mobile */}
           <AnimatePresence>
-            {showScrollHint && selectedProject.image.length > 1 && (
+            {selectedProject.image.length > 1 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
