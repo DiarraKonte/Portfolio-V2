@@ -79,7 +79,7 @@ const projet: Project[] = [
     years: "Mai 2025 ",
     color: "#1dd396",
     message: "Voir code GitHub",
-    technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Git", "GitHub"],
+    technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js", "TypeScript", "Git", "GitHub", "Vercel"],
     externalLink: 'https://github.com/DiarraKonte/Portfolio-V2',
     icon: SiNextdotjs
   },
