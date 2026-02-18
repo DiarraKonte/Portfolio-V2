@@ -8,8 +8,6 @@ import NavBar from "@/components/main/NavBar";
 import Parcours from "@/components/main/Parcours";
 import Projects from "@/components/main/Projet"; // Renommé pour cohérence
 import Skills from "@/components/main/skills";
-import SAE from "@/components/main/SAE";
-import Stage from "@/components/main/stage";
 import ScrollToTop from "@/components/main/ScrollToTop";
 
 import BackgroundGrid from "@/components/main/BackgroundGrid";
