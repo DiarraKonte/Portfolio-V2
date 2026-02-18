@@ -7,8 +7,7 @@ import { motion } from 'framer-motion';
 const NavLinks = [
     { name: 'Accueil', link: '#hero' },
     { name: 'À propos', link: '#about' },
-    { name: 'SAE', link: '#sae' },
-    { name: "Stage", link: '#stage' },
+    { name: 'Parcours', link: '#parcours' },
     { name: 'Skills', link: '#skills' },
     { name: 'Experience', link: '#experience' },
     { name: 'Projets', link: '#projects' },

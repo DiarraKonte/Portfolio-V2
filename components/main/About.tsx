@@ -109,7 +109,7 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="relative min-h-screen py-24 px-4  text-gray-200"
+      className="relative min-h-screen pt-24 pb-8 px-4  text-gray-200"
     >
       <div className="max-w-6xl mx-auto">
         <div className="space-y-8">

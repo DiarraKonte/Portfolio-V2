@@ -5,6 +5,7 @@ import Experience from "@/components/main/Experience";
 import Footer from "@/components/main/Footer";
 import Hero from "@/components/main/Hero";
 import NavBar from "@/components/main/NavBar";
+import Parcours from "@/components/main/Parcours";
 import Projects from "@/components/main/Projet"; // Renommé pour cohérence
 import Skills from "@/components/main/skills";
 import SAE from "@/components/main/SAE";
@@ -27,12 +28,8 @@ export default function Home() {
         <About />
       </section>
 
-      <section id="sae" className="relative z-10 -mt-[1px]">
-        <SAE />
-      </section>
-
-      <section id="stage" className="relative z-10 -mt-[1px]">
-        <Stage />
+      <section id="parcours" className="relative z-10">
+        <Parcours />
       </section>
 
       <section id="skills" className="relative z-0">
