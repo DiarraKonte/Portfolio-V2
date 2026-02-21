@@ -5,7 +5,7 @@ import { FiArrowDownRight } from 'react-icons/fi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Image from 'next/image';
 
-const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+const COLORS = ["#13FFAA", "#1E67C6"];
 
 const Hero = () => {
     const color = useMotionValue(COLORS[0]);
