@@ -174,8 +174,8 @@ const Hero = () => {
                         className="group flex w-fit items-center gap-2 rounded-full px-6 py-3 bg-white/5 backdrop-blur-sm font-semibold transition-all hover:bg-white/10"
                         onClick={() => {
                             const link = document.createElement('a');
-                            link.href = '/CV.pdf';
-                            link.download = 'CV_Diarra_Konte.pdf';
+                            link.href = '/CV_KONTE_Diarra_BUT3_INFO.pdf';
+                            link.download = 'CV_KONTE_Diarra_BUT3_INFO.pdf';
                             link.click();
                         }}
                     >
