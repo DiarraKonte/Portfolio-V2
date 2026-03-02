@@ -1,16 +1,18 @@
 "use client";
+import dynamic from "next/dynamic";
 import About from "@/components/main/About";
 import Contact from "@/components/main/Contact";
-import Experience from "@/components/main/Experience";
 import Footer from "@/components/main/Footer";
 import Hero from "@/components/main/Hero";
 import NavBar from "@/components/main/NavBar";
 import Parcours from "@/components/main/Parcours";
-import Projects from "@/components/main/Projet"; // Renommé pour cohérence
 import Skills from "@/components/main/skills";
 import ScrollToTop from "@/components/main/ScrollToTop";
-
 import BackgroundGrid from "@/components/main/BackgroundGrid";
+
+// Swiper accesses localStorage at module load time — must be client-only
+const Experience = dynamic(() => import("@/components/main/Experience"), { ssr: false });
+const Projects = dynamic(() => import("@/components/main/Projet"), { ssr: false });
 
 export default function Home() {
   return (
