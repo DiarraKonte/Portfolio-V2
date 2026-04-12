@@ -36,7 +36,7 @@ const experiences: Experience[] = [
     years: "Avril 2026 - Juin 2026",
     color: "#1E67C6",
     message: "",
-    technologies: ["Linux", "Windows Server", "Rclone", "WordPress", "Google Apps Script", "API LLM", "Scripts Bash"],
+    technologies: ["Linux", "Windows Server", "Rclone", "Python", "WordPress", "Google Apps Script", "API LLM", "Scripts Bash"],
     externalLink: "",
   },
   {
