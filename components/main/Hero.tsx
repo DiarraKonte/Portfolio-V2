@@ -102,8 +102,8 @@ const Hero = () => {
                     className="mb-6 h-1 w-24 bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-50"
                 />
 
-                <span className="mb-6 inline-block rounded-full bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 text-sm sm:text-base text-gray-300">
-                    Étudiant en Informatique • À la recherche d&apos;une
+                <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 px-5 py-2 text-sm text-gray-300">
+                    Étudiant en BUT Informatique · En recherche d&apos;alternance —{' '}
                     <motion.span
                         style={{
                             backgroundImage: textGradient,
@@ -111,9 +111,9 @@ const Hero = () => {
                             backgroundClip: 'text',
                             color: 'transparent'
                         }}
-                        className='font-bold ml-1'
+                        className="font-semibold"
                     >
-                        alternance
+                        Cycle ingénieur ESIEA · 2 sem / 2 sem
                     </motion.span>
                 </span>
 

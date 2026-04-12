@@ -27,6 +27,42 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
+    id: 4,
+    year: 2026,
+    place: "Nanterre – La Défense",
+    title: "Assistant Développeur — Stage IFFP",
+    description: "Conception et déploiement d'un système de backup automatisé (scripts + Rclone) supprimant toute intervention manuelle sur les sauvegardes quotidiennes. Audit des logs serveur, diagnostic et correction de bugs récurrents pour un monitoring plus fiable et une traçabilité renforcée. Mission en cours : intégration d'une API LLM pour automatiser des flux métiers internes.",
+    image: ["/IFFP.png"],
+    years: "Avril 2026 - Juin 2026",
+    color: "#1E67C6",
+    message: "",
+    technologies: ["Linux", "Windows Server", "Rclone", "WordPress", "Google Apps Script", "API LLM", "Scripts Bash"],
+    externalLink: "",
+  },
+  {
+    id: 3,
+    year: 2025,
+    place: "Issy-les-Moulineaux",
+    title: "Stage chez ReeWayy",
+    description: "Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end, avec la prise en charge d'une user story, tout en travaillant en collaboration avec l'équipe back-end. Workflow présenté sous forme d'images.",
+    image: [
+      "/arimayi.png",
+      "/dashboard.png",
+      "/jobsearch.png",
+      "/details.png",
+      "/cv.png",
+      "/cv2.png",
+      "/cv3.png",
+      "/validate.png",
+      "/redirect.png"
+    ],
+    years: "Janvier 2025 - Mars 2025",
+    color: "#FFFFFF",
+    message: "Voir code GitHub",
+    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux", "I18N", "ANT Design", "Git", "GitHub", "Swagger", "Méthodologie Agile"],
+    externalLink: "https://github.com/DiarraKonte/AriMayi-US-720/tree/main"
+  },
+  {
     id: 2,
     year: 2024,
     place: "Argenteuil",
@@ -52,29 +88,6 @@ const experiences: Experience[] = [
     technologies: ["Relation client", "Électronique"],
     externalLink: ""
   },
-  {
-    id: 3,
-    year: 2023,
-    place: "Issy-les-Moulineaux",
-    title: "Stage chez ReeWayy",
-    description: "Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end, avec la prise en charge d'une user story, tout en travaillant en collaboration avec l'équipe back-end. Workflow présenté sous forme d'images.",
-    image: [
-      "/arimayi.png",
-      "/dashboard.png",
-      "/jobsearch.png",
-      "/details.png",
-      "/cv.png",
-      "/cv2.png",
-      "/cv3.png",
-      "/validate.png",
-      "/redirect.png"
-    ],
-    years: "Janvier 2025 - Mars 2025",
-    color: "#FFFFFF",
-    message: "Voir code GitHub",
-    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux", "I18N", "ANT Design", "Git", "GitHub", "Swagger", "Méthodologie Agile"],
-    externalLink: "https://github.com/DiarraKonte/AriMayi-US-720/tree/main"
-  }
 ];
 
 
