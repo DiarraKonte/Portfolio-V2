@@ -122,7 +122,7 @@ const TECH_COLORS: Record<string, string> = {
   Dart: '#0175C2', Java: '#007396', PHP: '#777BB4', 'Node.js': '#68a063',
   Git: '#F05032', GitHub: '#e6edf3', 'Tailwind CSS': '#06B6D4', Stripe: '#635BFF',
   Firebase: '#FFCA28', HTML: '#E34F26', CSS: '#1572B6',
-  Python: '#3572A5', Pandas: '#150458', Streamlit: '#ff4b4b', Ollama: '#3fb950',
+  Python: '#3572A5', Pandas: '#e0a840', Streamlit: '#ff4b4b', Ollama: '#3fb950',
   GitPython: '#F05032', Seaborn: '#4c72b0', Matplotlib: '#11557c',
   default: '#58a6ff',
 };
