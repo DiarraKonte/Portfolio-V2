@@ -1,65 +1,52 @@
 'use client';
-
 import React, { useEffect, useState } from 'react';
 
 const BackgroundGrid = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mouse, setMouse] = useState({ x: -999, y: -999 });
 
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY
-            });
-        };
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => setMouse({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', onMove);
+    return () => window.removeEventListener('mousemove', onMove);
+  }, []);
 
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+  return (
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0" style={{ background: '#0d1117' }} />
 
-    return (
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-            {/* Fond de base Slate-950 */}
-            <div className="absolute inset-0 bg-slate-950" />
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #30363d 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+          opacity: 0.5,
+        }}
+      />
 
-            {/* Grille de base (Très discrète, presque invisible) */}
-            <div
-                className="absolute inset-0 opacity-[0.03]"
-                style={{
-                    backgroundImage: `
-                        linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '40px 40px'
-                }}
-            />
+      {/* Mouse-reveal blue grid */}
+      <div
+        className="absolute inset-0 transition-opacity duration-200"
+        style={{
+          backgroundImage: `
+            linear-gradient(#58a6ff15 1px, transparent 1px),
+            linear-gradient(90deg, #58a6ff15 1px, transparent 1px)
+          `,
+          backgroundSize: '28px 28px',
+          maskImage: `radial-gradient(280px circle at ${mouse.x}px ${mouse.y}px, black, transparent)`,
+          WebkitMaskImage: `radial-gradient(280px circle at ${mouse.x}px ${mouse.y}px, black, transparent)`,
+        }}
+      />
 
-            {/* Spotlight Coloré (Lueur diffuse) */}
-            <div
-                className="absolute inset-0 transition-opacity duration-300"
-                style={{
-                    background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(99, 102, 241, 0.03), transparent 60%)`
-                }}
-            />
-
-            {/* Grille Révélée (Plus nette au survol) */}
-            <div
-                className="absolute inset-0"
-                style={{
-                    backgroundImage: `
-                        linear-gradient(rgba(99, 102, 241, 0.2) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(99, 102, 241, 0.2) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '40px 40px',
-                    maskImage: `radial-gradient(250px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
-                    WebkitMaskImage: `radial-gradient(250px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`
-                }}
-            />
-
-            {/* Vignette pour adoucir les bords de l'écran */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/80 pointer-events-none" />
-        </div>
-    );
+      {/* Vignette */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at center, transparent 50%, #0d1117 100%)',
+        }}
+      />
+    </div>
+  );
 };
 
 export default BackgroundGrid;

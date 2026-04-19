@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Diarra Konte | Portfolio Développeur Fullstack",
   description: "Portfolio de Diarra Konte, étudiant en BUT Informatique à l'IUT Sorbonne Paris Nord. Développement web, React, Next.js, TypeScript.",
+  openGraph: {
+    title: "Diarra Konte | Développeur Fullstack",
+    description: "Étudiant en BUT Informatique, recherche alternance ESIEA. React, Next.js, TypeScript, Flutter.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

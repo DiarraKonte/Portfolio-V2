@@ -1,65 +1,28 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@theme inline {
-  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
-}
- 
-@keyframes spotlight {
-  0% {
-    opacity: 0;
-    transform: translate(-72%, -62%) scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -40%) scale(1);
-  }
-}
-
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --gh-bg: #0d1117;
+  --gh-surface: #161b22;
+  --gh-surface-2: #21262d;
+  --gh-border: #30363d;
+  --gh-text: #e6edf3;
+  --gh-muted: #8b949e;
+  --gh-green: #3fb950;
+  --gh-blue: #58a6ff;
+  --gh-purple: #bc8cff;
+  --gh-yellow: #e3b341;
+  --gh-red: #ff7b72;
+  --gh-orange: #ffa657;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-body {
-  color: #e2e8f0;
-  background: #020617;
-}
-
-.color {
-  background-color: #766c77;
-}
-
-.glass{
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border:1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-
+  color: var(--gh-text);
+  background: var(--gh-bg);
 }
 
 html {
@@ -67,18 +30,29 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-.progress-bar-container {
-  width: 100%;
-  height: 4px;
-  background: #333;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gh-bg); }
+::-webkit-scrollbar-thumb { background: var(--gh-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gh-muted); }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.progress-bar {
-  height: 100%;
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--gh-green);
+  animation: blink 1s step-end infinite;
+  margin-left: 1px;
+  vertical-align: text-bottom;
 }
-

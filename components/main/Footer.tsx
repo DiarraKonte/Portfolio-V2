@@ -1,43 +1,62 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="relative py-12 mt-[-2px] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col items-center gap-6">
-          {/* Social Links */}
-          <div className="flex gap-4">
-            <motion.a
-              whileHover={{ y: -3, scale: 1.1 }}
+    <footer
+      className="relative py-8 px-6"
+      style={{ borderTop: '1px solid #30363d' }}
+    >
+      <div className="max-w-7xl mx-auto font-mono">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Terminal exit message */}
+          <div>
+            <p className="text-xs mb-1" style={{ color: '#8b949e' }}>
+              <span style={{ color: '#3fb950' }}>$</span> exit
+            </p>
+            <p className="text-xs" style={{ color: '#30363d' }}>
+              Connection closed · © {new Date().getFullYear()} Diarra Konte
+            </p>
+            <p className="text-xs" style={{ color: '#30363d' }}>
+              Built with Next.js · Tailwind CSS · Framer Motion
+            </p>
+          </div>
+
+          {/* Social links */}
+          <div className="flex gap-3">
+            <a
               href="https://github.com/diarrakonte"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-colors text-xl"
               aria-label="GitHub"
+              className="flex items-center gap-2 px-3 py-1.5 rounded text-xs transition-colors"
+              style={{
+                background: '#161b22',
+                border: '1px solid #30363d',
+                color: '#8b949e',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#e6edf3')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#8b949e')}
             >
-              <FaGithub />
-            </motion.a>
-            <motion.a
-              whileHover={{ y: -3, scale: 1.1 }}
+              <FaGithub size={14} />
+              <span>diarrakonte</span>
+            </a>
+            <a
               href="https://www.linkedin.com/in/diarra-konte-4a60762aa/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-blue-400 hover:border-blue-400/20 transition-colors text-xl"
               aria-label="LinkedIn"
+              className="flex items-center gap-2 px-3 py-1.5 rounded text-xs transition-colors"
+              style={{
+                background: '#161b22',
+                border: '1px solid #30363d',
+                color: '#8b949e',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#58a6ff')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#8b949e')}
             >
-              <FaLinkedin />
-            </motion.a>
-          </div>
-
-          {/* Copyright */}
-          <div className="text-center space-y-2">
-            <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Diarra Konte. Tous droits réservés.
-            </p>
-            <p className="text-xs text-gray-500 flex items-center gap-1 justify-center">
-              Conçu avec Next.js et Tailwind CSS
-            </p>
+              <FaLinkedin size={14} />
+              <span>diarra-konte</span>
+            </a>
           </div>
         </div>
       </div>

@@ -7,13 +7,10 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
-import { FaExternalLinkAlt } from "react-icons/fa";
-
-
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 type Experience = {
   id: number;
-  year: number;
   place: string;
   title: string;
   description: string;
@@ -28,276 +25,336 @@ type Experience = {
 const experiences: Experience[] = [
   {
     id: 4,
-    year: 2026,
-    place: "Nanterre – La Défense",
-    title: "Assistant Développeur — Stage IFFP",
-    description: "Conception et déploiement d'un système de backup automatisé (scripts + Rclone) supprimant toute intervention manuelle sur les sauvegardes quotidiennes. Audit des logs serveur, diagnostic et correction de bugs récurrents pour un monitoring plus fiable et une traçabilité renforcée. Mission en cours : intégration d'une API LLM pour automatiser des flux métiers internes.",
-    image: ["/IFFP.png"],
-    years: "Avril 2026 - Juin 2026",
-    color: "#1E67C6",
-    message: "",
-    technologies: ["Linux", "Windows Server", "Rclone", "Python", "WordPress", "Google Apps Script", "API LLM", "Scripts Bash"],
-    externalLink: "",
+    place: 'Nanterre – La Défense',
+    title: 'Assistant Développeur — Stage IFFP',
+    description:
+      "Conception et déploiement d'un système de backup automatisé (scripts + Rclone) supprimant toute intervention manuelle sur les sauvegardes quotidiennes. Audit des logs serveur, diagnostic et correction de bugs récurrents. Mission en cours : intégration d'une API LLM pour automatiser des flux métiers internes.",
+    image: ['/IFFP.png'],
+    years: 'Avril 2026 — Juin 2026',
+    color: '#58a6ff',
+    message: '',
+    technologies: ['Linux', 'Windows Server', 'Rclone', 'Python', 'WordPress', 'Google Apps Script', 'API LLM', 'Bash'],
+    externalLink: '',
   },
   {
     id: 3,
-    year: 2025,
-    place: "Issy-les-Moulineaux",
-    title: "Stage chez ReeWayy",
-    description: "Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end, avec la prise en charge d'une user story, tout en travaillant en collaboration avec l'équipe back-end. Workflow présenté sous forme d'images.",
-    image: [
-      "/arimayi.png",
-      "/dashboard.png",
-      "/jobsearch.png",
-      "/details.png",
-      "/cv.png",
-      "/cv2.png",
-      "/cv3.png",
-      "/validate.png",
-      "/redirect.png"
-    ],
-    years: "Janvier 2025 - Mars 2025",
-    color: "#FFFFFF",
-    message: "Voir code GitHub",
-    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux", "I18N", "ANT Design", "Git", "GitHub", "Swagger", "Méthodologie Agile"],
-    externalLink: "https://github.com/DiarraKonte/AriMayi-US-720/tree/main"
+    place: 'Issy-les-Moulineaux',
+    title: 'Stage chez ReeWayy',
+    description:
+      "Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end. Prise en charge d'une user story complète en collaboration avec l'équipe back-end. Méthodologie Agile.",
+    image: ['/arimayi.png', '/dashboard.png', '/jobsearch.png', '/details.png', '/cv.png', '/cv2.png', '/cv3.png', '/validate.png', '/redirect.png'],
+    years: 'Janvier 2025 — Mars 2025',
+    color: '#3fb950',
+    message: 'Voir code GitHub',
+    technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux', 'I18N', 'ANT Design', 'Git', 'GitHub', 'Swagger', 'Agile'],
+    externalLink: 'https://github.com/DiarraKonte/AriMayi-US-720/tree/main',
   },
   {
     id: 2,
-    year: 2024,
-    place: "Argenteuil",
-    title: "Livreur indépendant Uber Eats",
-    description: "Livraison de repas pour des particuliers via la plateforme Uber Eats.",
-    image: ["/ubereats.jpg"],
-    years: "Avril 2022 - aujourd'hui",
-    color: "#13FFAA",
-    message: "",
-    technologies: ["Gestion des commandes", "Relation client", "Autonomie", "Organisation", "Responsabilité"],
-    externalLink: "",
+    place: 'Argenteuil',
+    title: 'Livreur indépendant Uber Eats',
+    description: 'Livraison de repas pour des particuliers via la plateforme Uber Eats.',
+    image: ['/ubereats.jpg'],
+    years: 'Avril 2022 — aujourd\'hui',
+    color: '#3fb950',
+    message: '',
+    technologies: ['Gestion des commandes', 'Relation client', 'Autonomie', 'Organisation'],
+    externalLink: '',
   },
   {
     id: 1,
-    year: 2023,
-    place: "Seine-Saint-Denis",
-    title: "Assistant technicien électronique",
-    description: "Participation au développement de l'espace personnel des apprenants sur la plateforme AriMayi. Collaboration avec l'équipe back-end pour implémenter des fonctionnalités spécifiques et résoudre des problèmes complexes.",
-    image: ["/besmart.png"],
-    years: "Juin 2023 - Août 2023",
-    color: "#FFFF00",
-    message: "",
-    technologies: ["Relation client", "Électronique"],
-    externalLink: ""
+    place: 'Seine-Saint-Denis',
+    title: 'Assistant technicien électronique',
+    description:
+      'Stage technicien en électronique : diagnostic de matériel, relation client, support technique.',
+    image: ['/besmart.png'],
+    years: 'Juin 2023 — Août 2023',
+    color: '#e3b341',
+    message: '',
+    technologies: ['Relation client', 'Électronique'],
+    externalLink: '',
   },
 ];
 
+const TECH_COLORS: Record<string, string> = {
+  React: '#61DAFB', TypeScript: '#3178c6', 'Next.js': '#ffffff', Python: '#3572A5',
+  Linux: '#3fb950', Docker: '#2496ED', Git: '#F05032', GitHub: '#e6edf3',
+  'Tailwind CSS': '#06B6D4', Redux: '#764ABC', default: '#58a6ff',
+};
+const techColor = (t: string) => TECH_COLORS[t] || TECH_COLORS.default;
 
 const Experience = () => {
-  const [selectedProject, setSelectedProject] = useState(experiences[0]);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selected, setSelected] = useState(experiences[0]);
+  const [transitioning, setTransitioning] = useState(false);
+  const [zoomedImg, setZoomedImg] = useState<string | null>(null);
 
-
-
-  const handleProjectChange = (exp: Experience) => {
-    if (selectedProject.id === exp.id) return;
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setSelectedProject(exp);
-      setIsTransitioning(false);
-    }, 200);
+  const handleSelect = (exp: Experience) => {
+    if (selected.id === exp.id) return;
+    setTransitioning(true);
+    setTimeout(() => { setSelected(exp); setTransitioning(false); }, 200);
   };
-
-  const detailsVariants = { hidden: { opacity: 0, y: 20, scale: 0.95 }, visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut", staggerChildren: 0.1 } }, exit: { opacity: 0, y: -20, scale: 0.95, transition: { duration: 0.2, ease: "easeIn" } } };
-  const itemVariants = { hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } } };
-  const techVariants = { hidden: { opacity: 0, scale: 0.8, y: 10 }, visible: (i: number) => ({ opacity: 1, scale: 1, y: 0, transition: { delay: i * 0.05, duration: 0.3, ease: "easeOut" } }) };
-  const carouselVariants = { hidden: { opacity: 0, scale: 0.9, rotateY: 15 }, visible: { opacity: 1, scale: 1, rotateY: 0, transition: { duration: 0.6, ease: "easeOut" } }, exit: { opacity: 0, scale: 0.9, rotateY: -15, transition: { duration: 0.3, ease: "easeIn" } } };
 
   return (
     <motion.section
       id="experience"
-      className="py-16 sm:py-24 md:py-32 px-4 text-white"
+      className="py-16 sm:py-24 px-4 text-white"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Colonne de gauche */}
-        <div>
-          <motion.h2
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl sm:text-6xl font-bold mb-10"
-          >
-            <span className="text-gray-400">Expériences</span>
-          </motion.h2>
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: -16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10"
+        >
+          <p className="font-mono text-xs mb-2" style={{ color: '#8b949e' }}>
+            <span style={{ color: '#3fb950' }}>$</span> gh issue list --repo diarrakonte/career
+          </p>
+          <h2 className="text-4xl sm:text-6xl font-bold font-mono" style={{ color: '#e6edf3' }}>
+            Expériences
+          </h2>
+        </motion.div>
 
-          <div className="relative border-l-2 border-gray-800 ml-3 md:ml-6 pl-8 md:pl-12 space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
-                onClick={() => handleProjectChange(exp)}
-                className="cursor-pointer group relative"
-              >
-                {/* Timeline Dot */}
-                <div className={`absolute -left-[41px] md:-left-[59px] top-1 w-5 h-5 rounded-full border-4 border-black transition-colors duration-300 ${selectedProject.id === exp.id ? 'bg-purple-500 scale-125' : 'bg-gray-700 group-hover:bg-gray-500'}`} />
-
-                <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                  <p className="text-gray-400 text-sm sm:text-lg mb-1 flex items-center gap-2">
-                    <span className="text-purple-400 font-mono">{exp.years}</span>
-                    <span className="w-1 h-1 bg-gray-600 rounded-full"></span>
-                    <span className="font-bold text-gray-300">{exp.place}</span>
-                  </p>
-                  <motion.h3
-                    className={`text-xl sm:text-3xl font-bold mb-2 transition-colors duration-300 ${selectedProject.id === exp.id ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}
-                  >
-                    {exp.title}
-                  </motion.h3>
-                </motion.div>
-
-                <AnimatePresence mode="wait">
-                  {selectedProject.id === exp.id && !isTransitioning && (
-                    <motion.div variants={detailsVariants} initial="hidden" animate="visible" exit="exit" className="overflow-hidden">
-                      <motion.p variants={itemVariants} className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
-                        {exp.description}
-                      </motion.p>
-                      {exp.externalLink && (
-                        <motion.a
-                          variants={itemVariants}
-                          href={exp.externalLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-purple-400 hover:text-purple-300 flex items-center gap-2 text-sm font-medium mb-4"
-                          whileHover={{ x: 5 }}
-                        >
-                          <span>{exp.message}</span>
-                          <FaExternalLinkAlt size={12} />
-                        </motion.a>
-                      )}
-                      <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, i) => (
-                          <motion.span
-                            key={tech}
-                            custom={i}
-                            variants={techVariants}
-                            className="inline-block bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-xs text-gray-300 hover:bg-white/10 transition-colors"
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Colonne de droite */}
-        <div className="relative w-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`carousel-${selectedProject.id}`}
-              variants={carouselVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-full"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left — Issues list */}
+          <div>
+            {/* Issues header */}
+            <div
+              className="flex items-center gap-4 px-4 py-2 rounded-t-lg font-mono text-xs"
+              style={{ background: '#161b22', border: '1px solid #30363d' }}
             >
-              <Swiper
-                modules={[Pagination, Navigation]}
-                pagination={{ clickable: true }}
-                navigation={{
-                  prevEl: '.swiper-button-prev-custom-exp',
-                  nextEl: '.swiper-button-next-custom-exp',
-                }}
-                spaceBetween={10}
-                slidesPerView={1}
-                className="w-full"
-              >
-                {selectedProject.image.map((img, index) => (
-                  <SwiperSlide
-                    key={`${selectedProject.id}-${index}`}
-                    className="flex justify-center"
+              <span style={{ color: '#e6edf3' }}>
+                ◉ <span className="font-semibold">{experiences.length} Open</span>
+              </span>
+              <span style={{ color: '#8b949e' }}>✓ 0 Closed</span>
+            </div>
+
+            {/* Issue items */}
+            <div style={{ border: '1px solid #30363d', borderTop: 'none' }}>
+              {experiences.map((exp, idx) => {
+                const isSelected = selected.id === exp.id;
+                return (
+                  <motion.div
+                    key={exp.id}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.08 }}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-                      onClick={() => setSelectedImage(img)}
-                      className="relative w-full rounded-2xl border border-white/10 p-6 min-h-[400px] flex items-center justify-center cursor-pointer"
+                    <button
+                      onClick={() => handleSelect(exp)}
+                      className="w-full text-left transition-colors duration-150"
                       style={{
-                        background: `linear-gradient(135deg, ${selectedProject.color}10, rgba(255,255,255,0.02))`
+                        background: isSelected ? '#161b22' : 'transparent',
+                        borderBottom: idx < experiences.length - 1 ? '1px solid #21262d' : 'none',
                       }}
                     >
-                      <Image
-                        src={img}
-                        alt={`${selectedProject.title} image ${index + 1}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto max-h-[400px] object-contain rounded-lg"
-                      />
-                    </motion.div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </motion.div>
-          </AnimatePresence>
+                      <div className="flex gap-3 px-3 sm:px-4 py-3 sm:py-4">
+                        {/* Open indicator */}
+                        <span
+                          className="mt-0.5 shrink-0 text-base"
+                          style={{ color: '#3fb950' }}
+                        >
+                          ◉
+                        </span>
 
-          {/* Custom Navigation Arrows - Only show when more than one image */}
-          {selectedProject.image.length > 1 && (
-            <>
-              <button className="swiper-button-prev-custom-exp absolute left-2 top-[60%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group">
-                <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button className="swiper-button-next-custom-exp absolute right-2 top-[60%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group">
-                <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </>
-          )}
+                        <div className="flex-1 min-w-0">
+                          {/* Title + ID */}
+                          <div className="flex items-center gap-2 flex-wrap mb-1.5">
+                            <span
+                              className="font-semibold text-sm"
+                              style={{ color: isSelected ? '#e6edf3' : '#8b949e' }}
+                            >
+                              {exp.title}
+                            </span>
+                            <span className="font-mono text-xs" style={{ color: '#30363d' }}>
+                              #{exp.id}
+                            </span>
+                          </div>
 
-          {/* Indice défilement mobile */}
-          <AnimatePresence>
-            {selectedProject.image.length > 1 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 text-center lg:hidden"
-              >
+                          {/* Tech labels */}
+                          <div className="flex flex-wrap gap-1 mb-2">
+                            {exp.technologies.slice(0, 4).map(t => (
+                              <span
+                                key={t}
+                                className="font-mono text-[10px] px-1.5 py-0.5 rounded-full"
+                                style={{
+                                  background: `${techColor(t)}15`,
+                                  color: techColor(t),
+                                  border: `1px solid ${techColor(t)}30`,
+                                }}
+                              >
+                                {t}
+                              </span>
+                            ))}
+                            {exp.technologies.length > 4 && (
+                              <span className="font-mono text-[10px]" style={{ color: '#8b949e' }}>
+                                +{exp.technologies.length - 4}
+                              </span>
+                            )}
+                          </div>
 
-                <motion.div
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                  className="w-1 h-8 bg-white/50 mx-auto rounded-full"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
+                          {/* Meta */}
+                          <p className="font-mono text-xs" style={{ color: '#8b949e' }}>
+                            {exp.place} · {exp.years}
+                          </p>
+                        </div>
+                      </div>
 
-          {/* 🖼️ Modal Image plein écran */}
-          {selectedImage && (
-            <div
-              className="fixed inset-0 z-50 bg-black bg-opacity-90 flex justify-center items-center"
-              onClick={() => setSelectedImage(null)}
-            >
-              <Image
-                src={selectedImage}
-                alt="Image agrandie"
-                width={1000}
-                height={800}
-                className="object-contain max-h-full max-w-full rounded-lg"
-              />
+                      {/* Expanded body */}
+                      <AnimatePresence mode="wait">
+                        {isSelected && !transitioning && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.22 }}
+                            className="overflow-hidden"
+                          >
+                            <div
+                              className="mx-3 sm:mx-4 mb-4 p-3 sm:p-4 rounded-lg text-xs sm:text-sm"
+                              style={{ background: '#0d1117', border: '1px solid #30363d' }}
+                            >
+                              <p className="leading-relaxed mb-3" style={{ color: '#8b949e' }}>
+                                {exp.description}
+                              </p>
+                              {/* All tech labels */}
+                              <div className="flex flex-wrap gap-1.5 mb-3">
+                                {exp.technologies.map(t => (
+                                  <span
+                                    key={t}
+                                    className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+                                    style={{
+                                      background: `${techColor(t)}15`,
+                                      color: techColor(t),
+                                      border: `1px solid ${techColor(t)}30`,
+                                    }}
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                              {exp.externalLink && (
+                                <a
+                                  href={exp.externalLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 font-mono text-xs hover:underline"
+                                  style={{ color: '#58a6ff' }}
+                                >
+                                  <FaExternalLinkAlt size={10} />
+                                  {exp.message}
+                                </a>
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </button>
+                  </motion.div>
+                );
+              })}
             </div>
-          )}
+          </div>
+
+          {/* Right — Image carousel */}
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`carousel-${selected.id}`}
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-lg overflow-hidden"
+                style={{ border: '1px solid #30363d' }}
+              >
+                {/* Attachment header */}
+                <div
+                  className="flex items-center gap-2 px-4 py-2 font-mono text-xs"
+                  style={{ background: '#161b22', borderBottom: '1px solid #30363d' }}
+                >
+                  <span style={{ color: '#8b949e' }}>
+                    📎 {selected.image.length} attachment{selected.image.length > 1 ? 's' : ''}
+                  </span>
+                  <span style={{ color: '#30363d' }}>·</span>
+                  <span style={{ color: selected.color }}>#{selected.id} {selected.title}</span>
+                </div>
+
+                <div style={{ background: '#0d1117' }}>
+                  <Swiper
+                    modules={[Pagination, Navigation]}
+                    pagination={{ clickable: true }}
+                    navigation={{
+                      prevEl: '.swiper-prev-exp',
+                      nextEl: '.swiper-next-exp',
+                    }}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    className="w-full"
+                  >
+                    {selected.image.map((img, i) => (
+                      <SwiperSlide key={`${selected.id}-${i}`}>
+                        <div
+                          className="relative w-full flex items-center justify-center p-4 cursor-zoom-in"
+                          style={{ minHeight: '360px' }}
+                          onClick={() => setZoomedImg(img)}
+                        >
+                          <Image
+                            src={img}
+                            alt={`${selected.title} — capture ${i + 1}`}
+                            width={600}
+                            height={400}
+                            className="w-full h-auto max-h-[360px] object-contain rounded"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Nav arrows */}
+            {selected.image.length > 1 && (
+              <>
+                <button
+                  className="swiper-prev-exp absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded flex items-center justify-center transition-colors"
+                  style={{ background: '#161b22', border: '1px solid #30363d', color: '#8b949e' }}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  className="swiper-next-exp absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded flex items-center justify-center transition-colors"
+                  style={{ background: '#161b22', border: '1px solid #30363d', color: '#8b949e' }}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Zoom modal */}
+      {zoomedImg && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 cursor-zoom-out"
+          onClick={() => setZoomedImg(null)}
+        >
+          <Image
+            src={zoomedImg}
+            alt="Vue agrandie"
+            width={1200}
+            height={800}
+            className="object-contain max-h-full max-w-full rounded-lg"
+          />
+        </div>
+      )}
     </motion.section>
   );
 };

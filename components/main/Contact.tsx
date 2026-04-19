@@ -1,116 +1,207 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+
+type ContactLine = {
+  id: number;
+  type: 'command' | 'output' | 'item' | 'blank';
+  text: string;
+  href?: string;
+  action?: () => void;
+};
+
+const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
 
 const Contact = () => {
-  const [hoveredEmail, setHoveredEmail] = useState(false);
-  const [hoveredPhone, setHoveredPhone] = useState(false);
+  const [lines, setLines] = useState<(ContactLine & { displayText: string })[]>([]);
+  const [done, setDone] = useState(false);
+  const startedRef = useRef(false);
+  const cancelledRef = useRef(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const hasTriggered = useRef(false);
+
+  const SCRIPT: ContactLine[] = [
+    { id: 1, type: 'command', text: 'ping diarra.dev' },
+    { id: 2, type: 'output', text: 'PONG — Disponible pour alternance · Septembre 2026' },
+    { id: 3, type: 'blank', text: '' },
+    { id: 4, type: 'command', text: './connect.sh' },
+    { id: 5, type: 'output', text: 'Choisissez un canal :' },
+    { id: 6, type: 'blank', text: '' },
+    { id: 7, type: 'item', text: '[1]  Email      diarrakontepro@gmail.com', href: 'mailto:diarrakontepro@gmail.com' },
+    { id: 8, type: 'item', text: '[2]  Téléphone  +33 7 51 45 86 85', href: 'tel:+33751458685' },
+    { id: 9, type: 'item', text: '[3]  GitHub     github.com/diarrakonte', href: 'https://github.com/diarrakonte' },
+    { id: 10, type: 'item', text: '[4]  LinkedIn   linkedin.com/in/diarra-konte', href: 'https://www.linkedin.com/in/diarra-konte-4a60762aa/' },
+    { id: 11, type: 'blank', text: '' },
+    { id: 12, type: 'output', text: 'Localisation : Argenteuil, Île-de-France (75, 92, 93, 94, 95)' },
+  ];
+
+  const runAnimation = async () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    cancelledRef.current = false;
+
+    await sleep(300);
+
+    for (const line of SCRIPT) {
+      if (cancelledRef.current) return;
+
+      if (line.type === 'command') {
+        setLines(prev => [...prev, { ...line, displayText: '' }]);
+        await sleep(150);
+        for (let i = 1; i <= line.text.length; i++) {
+          if (cancelledRef.current) return;
+          setLines(prev =>
+            prev.map(l => l.id === line.id ? { ...l, displayText: line.text.slice(0, i) } : l)
+          );
+          await sleep(40);
+        }
+        await sleep(250);
+      } else if (line.type === 'blank') {
+        setLines(prev => [...prev, { ...line, displayText: '' }]);
+        await sleep(60);
+      } else {
+        await sleep(100);
+        if (cancelledRef.current) return;
+        setLines(prev => [...prev, { ...line, displayText: line.text }]);
+      }
+    }
+    setDone(true);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasTriggered.current) {
+          hasTriggered.current = true;
+          runAnimation();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+      cancelledRef.current = true;
+      startedRef.current = false;
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const PROMPT_FULL = 'diarra@portfolio:~$';
+  const PROMPT_SHORT = '~$';
+
+  const renderLine = (line: ContactLine & { displayText: string }, idx: number) => {
+    const isLast = idx === lines.length - 1;
+
+    if (line.type === 'blank') return <div key={line.id} className="h-3" />;
+
+    if (line.type === 'command') {
+      return (
+        <div key={line.id} className="flex items-baseline gap-2 mb-0.5 leading-6 flex-wrap">
+          <span className="hidden sm:inline shrink-0" style={{ color: '#3fb950' }}>{PROMPT_FULL}</span>
+          <span className="inline sm:hidden shrink-0" style={{ color: '#3fb950' }}>{PROMPT_SHORT}</span>
+          <span style={{ color: '#e6edf3' }}>{line.displayText}</span>
+          {isLast && !done && <span className="terminal-cursor" />}
+        </div>
+      );
+    }
+
+    if (line.type === 'output') {
+      return (
+        <div key={line.id} className="mb-0.5 leading-6 pl-2" style={{ color: '#8b949e' }}>
+          {line.displayText}
+        </div>
+      );
+    }
+
+    if (line.type === 'item') {
+      const spaceIdx = line.displayText.indexOf('  ');
+      const label = spaceIdx > -1 ? line.displayText.slice(0, spaceIdx) : line.displayText;
+      const value = spaceIdx > -1 ? line.displayText.slice(spaceIdx).trim() : '';
+
+      return (
+        <div key={line.id} className="leading-6 pl-2 mb-0.5 flex items-baseline gap-2 flex-wrap">
+          <span style={{ color: '#8b949e' }}>{label}</span>
+          {line.href ? (
+            <a
+              href={line.href}
+              target={line.href.startsWith('http') ? '_blank' : undefined}
+              rel={line.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className="hover:underline transition-colors"
+              style={{ color: '#58a6ff' }}
+            >
+              {value}
+            </a>
+          ) : (
+            <span style={{ color: '#e6edf3' }}>{value}</span>
+          )}
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <motion.section
       id="contact"
-      className="py-32 sm:py-40 md:py-48 px-4 sm:px-6 lg:px-8 text-white min-h-screen flex items-center"
+      ref={sectionRef}
+      className="py-24 px-4 min-h-screen flex items-center"
     >
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16">
-        {/* Informations de contact */}
+      <div className="max-w-3xl mx-auto w-full">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: -16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="space-y-8"
+          className="mb-10"
         >
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-300"
-          >
-            Entrez en <span className="text-gray-500">contact</span>
-          </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="backdrop-blur-sm bg-white/5 border border-white/10 shadow-xl rounded-2xl p-6 sm:p-8 space-y-6"
-          >
-            {/* Téléphone */}
-            <div className="space-y-3">
-              <p className="text-base sm:text-lg text-gray-300 flex items-center gap-2">
-                <FaPhone className="text-gray-400" /> Téléphone
-              </p>
-              <motion.a
-                href="tel:+33751458685"
-                aria-label="Appeler Diarra Konté"
-                className="text-xl sm:text-2xl font-bold text-gray-200 hover:text-gray-400 transition-colors duration-300 flex items-center gap-2"
-                onHoverStart={() => setHoveredPhone(true)}
-                onHoverEnd={() => setHoveredPhone(false)}
-                whileHover={{ x: 5 }}
-              >
-                +33 7 51 45 86 85
-                <motion.span
-                  animate={{ x: hoveredPhone ? 5 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="inline-block"
-                >
-                  ↗
-                </motion.span>
-              </motion.a>
-            </div>
-
-            {/* Email */}
-            <div className="space-y-3">
-              <p className="text-base sm:text-lg text-gray-300 flex items-center gap-2">
-                <FaEnvelope className="text-gray-400" /> Email
-              </p>
-              <motion.a
-                href="mailto:diarrakontepro@gmail.com"
-                aria-label="Envoyer un email à Diarra Konté"
-                className="text-xl sm:text-2xl font-bold text-gray-200 hover:text-gray-400 transition-colors duration-300 flex items-center gap-2"
-                onHoverStart={() => setHoveredEmail(true)}
-                onHoverEnd={() => setHoveredEmail(false)}
-                whileHover={{ x: 5 }}
-              >
-                diarrakontepro@gmail.com
-                <motion.span
-                  animate={{ x: hoveredEmail ? 5 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="inline-block"
-                >
-                  ↗
-                </motion.span>
-              </motion.a>
-            </div>
-
-            {/* Localisation */}
-            <div className="space-y-3 pt-4 border-t border-gray-700">
-              <p className="text-base sm:text-lg text-gray-300 flex items-center gap-2">
-                <FaMapMarkerAlt className="text-gray-400" /> Localisation
-              </p>
-              <p className="text-lg sm:text-xl text-gray-300">Argenteuil, Île-de-France</p>
-            </div>
-          </motion.div>
+          <p className="font-mono text-xs mb-2" style={{ color: '#8b949e' }}>
+            <span style={{ color: '#3fb950' }}>$</span> ./contact.sh
+          </p>
+          <h2 className="text-4xl sm:text-6xl font-bold font-mono" style={{ color: '#e6edf3' }}>
+            Contact
+          </h2>
         </motion.div>
 
-        {/* Carte Google Maps */}
+        {/* Terminal window */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="w-full h-[300px] sm:h-[400px] lg:h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="rounded-lg overflow-hidden"
+          style={{ border: '1px solid #30363d' }}
         >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d41928.231509860525!2d2.2222179409417055!3d48.94368897214213!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66664dfcb055b%3A0x40b82c3688b36d0!2s95100%20Argenteuil!5e0!3m2!1sfr!2sfr!4v1745791381862!5m2!1sfr!2sfr"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            title="Localisation Argenteuil"
-            className="transition-transform duration-300 hover:scale-[1.01]"
-          />
+          {/* Chrome */}
+          <div
+            className="flex items-center gap-2 px-4 py-3"
+            style={{ background: '#21262d', borderBottom: '1px solid #30363d' }}
+          >
+            <span className="w-3 h-3 rounded-full" style={{ background: '#ff5f57' }} />
+            <span className="w-3 h-3 rounded-full" style={{ background: '#febc2e' }} />
+            <span className="w-3 h-3 rounded-full" style={{ background: '#28c840' }} />
+            <span className="flex-1 text-center font-mono text-xs" style={{ color: '#8b949e' }}>
+              bash — contact.sh
+            </span>
+          </div>
+
+          {/* Body */}
+          <div
+            className="p-3 sm:p-6 font-mono text-[11px] sm:text-sm"
+            style={{ background: '#0d1117', minHeight: '280px' }}
+          >
+            {lines.map(renderLine)}
+
+            {done && (
+              <div className="flex items-baseline gap-2 mt-3 leading-6">
+                <span className="hidden sm:inline shrink-0" style={{ color: '#3fb950' }}>{PROMPT_FULL}</span>
+                <span className="inline sm:hidden shrink-0" style={{ color: '#3fb950' }}>{PROMPT_SHORT}</span>
+                <span className="terminal-cursor" />
+              </div>
+            )}
+          </div>
         </motion.div>
       </div>
     </motion.section>

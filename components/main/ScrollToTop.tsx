@@ -35,10 +35,15 @@ const ScrollToTop = () => {
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.3 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="fixed bottom-8 right-8 z-50 p-3 rounded font-mono text-xs transition-colors duration-150"
+                    style={{
+                        background: '#161b22',
+                        border: '1px solid #30363d',
+                        color: '#3fb950',
+                    }}
                     aria-label="Retour en haut"
                 >
-                    <FaArrowUp size={20} />
+                    <FaArrowUp size={14} />
                 </motion.button>
             )}
         </AnimatePresence>
