@@ -9,12 +9,18 @@ import {
 } from 'react-icons/si';
 import { FaReact, FaGithub, FaJava, FaGitAlt, FaNodeJs } from 'react-icons/fa';
 
+interface RelatedProject {
+  name: string;
+  type: 'project' | 'experience';
+}
+
 interface Skill {
   name: string;
   icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   color: string;
   level: number;
   label: 'AVANCÉ' | 'INTERMÉDIAIRE' | 'NOTIONS';
+  related?: RelatedProject[];
 }
 
 interface Category {
@@ -28,40 +34,111 @@ const CATEGORIES: Category[] = [
     key: 'frontend',
     color: '#61DAFB',
     skills: [
-      { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff', level: 70, label: 'AVANCÉ' },
-      { name: 'React', icon: FaReact, color: '#61DAFB', level: 70, label: 'AVANCÉ' },
-      { name: 'TypeScript', icon: SiTypescript, color: '#3178c6', level: 65, label: 'AVANCÉ' },
-      { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4', level: 75, label: 'AVANCÉ' },
+      {
+        name: 'Next.js', icon: SiNextdotjs, color: '#ffffff', level: 70, label: 'AVANCÉ',
+        related: [
+          { name: 'Portfolio Next.js', type: 'project' },
+          { name: 'LumnPC', type: 'project' },
+          { name: 'Stage ReeWayy', type: 'experience' },
+        ],
+      },
+      {
+        name: 'React', icon: FaReact, color: '#61DAFB', level: 70, label: 'AVANCÉ',
+        related: [
+          { name: 'Portfolio Next.js', type: 'project' },
+          { name: 'LumnPC', type: 'project' },
+          { name: 'Stage ReeWayy', type: 'experience' },
+        ],
+      },
+      {
+        name: 'TypeScript', icon: SiTypescript, color: '#3178c6', level: 65, label: 'AVANCÉ',
+        related: [
+          { name: 'Portfolio Next.js', type: 'project' },
+          { name: 'LumnPC', type: 'project' },
+          { name: 'Stage ReeWayy', type: 'experience' },
+        ],
+      },
+      {
+        name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4', level: 75, label: 'AVANCÉ',
+        related: [
+          { name: 'Portfolio Next.js', type: 'project' },
+          { name: 'LumnPC', type: 'project' },
+          { name: 'Stage ReeWayy', type: 'experience' },
+        ],
+      },
     ],
   },
   {
     key: 'mobile',
-    color: '#02569B',
+    color: '#54C5F8',
     skills: [
-      { name: 'Flutter', icon: SiFlutter, color: '#54C5F8', level: 60, label: 'INTERMÉDIAIRE' },
-      { name: 'Dart', icon: SiDart, color: '#0175C2', level: 55, label: 'INTERMÉDIAIRE' },
+      {
+        name: 'Flutter', icon: SiFlutter, color: '#54C5F8', level: 60, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'OtakuGO', type: 'project' }],
+      },
+      {
+        name: 'Dart', icon: SiDart, color: '#0175C2', level: 55, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'OtakuGO', type: 'project' }],
+      },
     ],
   },
   {
     key: 'backend',
     color: '#68a063',
     skills: [
-      { name: 'Python', icon: SiPython, color: '#3572A5', level: 60, label: 'INTERMÉDIAIRE' },
-      { name: 'Node.js', icon: FaNodeJs, color: '#68a063', level: 50, label: 'INTERMÉDIAIRE' },
-      { name: 'PHP', icon: SiPhp, color: '#777BB4', level: 50, label: 'INTERMÉDIAIRE' },
-      { name: 'Java', icon: FaJava, color: '#007396', level: 55, label: 'INTERMÉDIAIRE' },
-      { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791', level: 55, label: 'INTERMÉDIAIRE' },
-      { name: 'MySQL', icon: SiMysql, color: '#4479A1', level: 50, label: 'INTERMÉDIAIRE' },
+      {
+        name: 'Python', icon: SiPython, color: '#3572A5', level: 60, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'Stage IFFP', type: 'experience' }],
+      },
+      {
+        name: 'Node.js', icon: FaNodeJs, color: '#68a063', level: 50, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'Plateforme de discussion', type: 'project' }],
+      },
+      {
+        name: 'PHP', icon: SiPhp, color: '#777BB4', level: 50, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'Plateforme de discussion', type: 'project' }],
+      },
+      {
+        name: 'Java', icon: FaJava, color: '#007396', level: 55, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'Calculatrice Java', type: 'project' }],
+      },
+      {
+        name: 'PostgreSQL', icon: SiPostgresql, color: '#336791', level: 55, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'Plateforme de discussion', type: 'project' }],
+      },
+      {
+        name: 'MySQL', icon: SiMysql, color: '#4479A1', level: 50, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'Plateforme de discussion', type: 'project' }],
+      },
     ],
   },
   {
     key: 'devops',
     color: '#2496ED',
     skills: [
-      { name: 'Git', icon: FaGitAlt, color: '#F05032', level: 75, label: 'AVANCÉ' },
-      { name: 'GitHub', icon: FaGithub, color: '#e6edf3', level: 80, label: 'AVANCÉ' },
-      { name: 'Docker', icon: SiDocker, color: '#2496ED', level: 45, label: 'INTERMÉDIAIRE' },
-      { name: 'Bash', icon: SiGnubash, color: '#3fb950', level: 50, label: 'INTERMÉDIAIRE' },
+      {
+        name: 'Git', icon: FaGitAlt, color: '#F05032', level: 75, label: 'AVANCÉ',
+        related: [
+          { name: 'Portfolio Next.js', type: 'project' },
+          { name: 'LumnPC', type: 'project' },
+          { name: 'OtakuGO', type: 'project' },
+        ],
+      },
+      {
+        name: 'GitHub', icon: FaGithub, color: '#e6edf3', level: 80, label: 'AVANCÉ',
+        related: [
+          { name: 'Portfolio Next.js', type: 'project' },
+          { name: 'LumnPC', type: 'project' },
+          { name: 'OtakuGO', type: 'project' },
+        ],
+      },
+      {
+        name: 'Docker', icon: SiDocker, color: '#2496ED', level: 45, label: 'INTERMÉDIAIRE',
+      },
+      {
+        name: 'Bash', icon: SiGnubash, color: '#3fb950', level: 50, label: 'INTERMÉDIAIRE',
+        related: [{ name: 'Stage IFFP', type: 'experience' }],
+      },
     ],
   },
 ];
@@ -105,9 +182,7 @@ const Skills = () => {
               className="flex items-center gap-2 px-4 py-2"
               style={{ background: '#161b22', borderBottom: '1px solid #30363d' }}
             >
-              <span className="font-mono text-xs" style={{ color: '#e3b341' }}>
-                skills.json
-              </span>
+              <span className="font-mono text-xs" style={{ color: '#e3b341' }}>skills.json</span>
             </div>
             <div className="p-3 sm:p-4 font-mono text-xs sm:text-sm overflow-x-auto" style={{ background: '#0d1117' }}>
               <p style={{ color: '#8b949e' }}>{'{'}</p>
@@ -166,7 +241,7 @@ const Skills = () => {
             </div>
 
             <div
-              className="flex items-center justify-center p-4 sm:p-8 h-full"
+              className="p-4 sm:p-8"
               style={{ background: '#0d1117', minHeight: '280px' }}
             >
               <AnimatePresence mode="wait">
@@ -180,21 +255,18 @@ const Skills = () => {
                     className="w-full"
                   >
                     {/* Icon + name */}
-                    <div className="flex items-center gap-4 mb-8">
+                    <div className="flex items-center gap-4 mb-6">
                       <div
-                        className="w-14 h-14 rounded-xl flex items-center justify-center"
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center shrink-0"
                         style={{ background: '#161b22', border: '1px solid #30363d' }}
                       >
                         {React.createElement(selected.icon, {
-                          className: 'w-7 h-7',
+                          className: 'w-6 h-6 sm:w-7 sm:h-7',
                           style: { color: selected.color },
                         })}
                       </div>
                       <div>
-                        <h3
-                          className="text-lg font-bold font-mono"
-                          style={{ color: '#e6edf3' }}
-                        >
+                        <h3 className="text-base sm:text-lg font-bold font-mono" style={{ color: '#e6edf3' }}>
                           {selected.name}
                         </h3>
                         <span
@@ -211,17 +283,11 @@ const Skills = () => {
                     </div>
 
                     {/* Progress */}
-                    <div
-                      className="font-mono text-xs flex justify-between mb-2"
-                      style={{ color: '#8b949e' }}
-                    >
+                    <div className="font-mono text-xs flex justify-between mb-2" style={{ color: '#8b949e' }}>
                       <span>maîtrise</span>
                       <span style={{ color: selected.color }}>{selected.level}%</span>
                     </div>
-                    <div
-                      className="w-full h-1.5 rounded-full overflow-hidden"
-                      style={{ background: '#21262d' }}
-                    >
+                    <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: '#21262d' }}>
                       <motion.div
                         className="h-full rounded-full"
                         style={{ background: selected.color }}
@@ -230,13 +296,41 @@ const Skills = () => {
                         transition={{ duration: 0.7, ease: 'easeOut' }}
                       />
                     </div>
-
-                    {/* ASCII bar */}
-                    <p className="font-mono text-xs mt-3" style={{ color: '#30363d' }}>
+                    <p className="font-mono text-xs mt-2" style={{ color: '#30363d' }}>
                       {'▓'.repeat(Math.floor(selected.level / 10))}
                       {'░'.repeat(10 - Math.floor(selected.level / 10))}
                       {' '}{selected.level}%
                     </p>
+
+                    {/* Related projects */}
+                    {selected.related && selected.related.length > 0 && (
+                      <div className="mt-6 pt-5" style={{ borderTop: '1px solid #21262d' }}>
+                        <p className="font-mono text-xs mb-3" style={{ color: '#8b949e' }}>
+                          {'// '}projets associés
+                        </p>
+                        <div className="space-y-2">
+                          {selected.related.map((p) => (
+                            <a
+                              key={p.name}
+                              href={p.type === 'experience' ? '#experience' : '#projects'}
+                              className="flex items-center gap-2 font-mono text-xs group"
+                              style={{ color: '#58a6ff' }}
+                            >
+                              <span
+                                className="shrink-0 text-[10px]"
+                                style={{ color: p.type === 'experience' ? '#e3b341' : '#3fb950' }}
+                              >
+                                {p.type === 'experience' ? '◉' : '⬡'}
+                              </span>
+                              <span className="group-hover:underline transition-all">{p.name}</span>
+                              <span className="text-[10px]" style={{ color: '#30363d' }}>
+                                {p.type === 'experience' ? 'expérience' : 'projet'}
+                              </span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </motion.div>
                 ) : (
                   <motion.div
@@ -244,12 +338,15 @@ const Skills = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-center font-mono"
+                    className="flex items-center justify-center font-mono"
+                    style={{ minHeight: '240px' }}
                   >
-                    <p className="text-3xl mb-3" style={{ color: '#30363d' }}>{'{ }'}</p>
-                    <p className="text-xs" style={{ color: '#8b949e' }}>
-                      Cliquez sur un skill pour voir les détails
-                    </p>
+                    <div className="text-center">
+                      <p className="text-3xl mb-3" style={{ color: '#30363d' }}>{'{ }'}</p>
+                      <p className="text-xs" style={{ color: '#8b949e' }}>
+                        Cliquez sur un skill pour voir les détails
+                      </p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>

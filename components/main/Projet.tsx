@@ -67,7 +67,7 @@ const projet: Project[] = [
     id: 4,
     title: 'Portfolio Next.js',
     description: 'Mon portfolio personnel, réalisé avec Next.js et Tailwind CSS. Il présente mes projets, mes compétences et mon parcours professionnel.',
-    image: ['/portfolio.png'],
+    image: ['/Portfolio_Hero.png'],
     years: 'Mai 2025',
     color: '#3fb950',
     message: 'Voir code GitHub',

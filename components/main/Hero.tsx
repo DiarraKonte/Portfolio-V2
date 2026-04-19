@@ -233,13 +233,13 @@ export default function Hero() {
               <p className="text-xs mt-0.5" style={{ color: '#3fb950' }}>Développeur Fullstack</p>
               <div className="mt-3 space-y-1">
                 <p className="text-[10px] flex items-center gap-1.5" style={{ color: '#8b949e' }}>
-                  <span style={{ color: '#58a6ff' }}>📍</span> Argenteuil, Île-de-France
+                  <span style={{ color: '#58a6ff' }}>--</span> Argenteuil, Île-de-France
                 </p>
                 <p className="text-[10px] flex items-center gap-1.5" style={{ color: '#8b949e' }}>
-                  <span style={{ color: '#58a6ff' }}>🎓</span> IUT Sorbonne Paris Nord
+                  <span style={{ color: '#58a6ff' }}>--</span> IUT Sorbonne Paris Nord
                 </p>
                 <p className="text-[10px] flex items-center gap-1.5" style={{ color: '#8b949e' }}>
-                  <span style={{ color: '#e3b341' }}>⚡</span> Open to work
+                  <span style={{ color: '#e3b341' }}>--</span> Open to work
                 </p>
               </div>
             </div>
@@ -266,8 +266,8 @@ export default function Hero() {
           </div>
           <div className="font-mono min-w-0">
             <p className="text-sm font-bold truncate" style={{ color: '#e6edf3' }}>Diarra Konte</p>
-            <p className="text-xs truncate mt-0.5" style={{ color: '#3fb950' }}>Développeur Fullstack</p>
-            <p className="text-[11px] truncate mt-1" style={{ color: '#8b949e' }}>📍 Argenteuil · ⚡ Open to work</p>
+            <p className="text-xs truncate mt-0.5" style={{ color: '#3fb950' }}>-- Développeur Fullstack</p>
+            <p className="text-[11px] truncate mt-1" style={{ color: '#8b949e' }}>-- Argenteuil · Open to work</p>
           </div>
         </motion.div>
 
