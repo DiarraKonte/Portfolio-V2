@@ -133,7 +133,7 @@ const Skills = () => {
                           &quot;{skill.name}&quot;
                           {si < cat.skills.length - 1 ? ',' : ''}
                           {isSelected && (
-                            <span style={{ color: '#3fb950' }}> // selected</span>
+                            <span style={{ color: '#3fb950' }}>{' // selected'}</span>
                           )}
                         </motion.button>
                       );
