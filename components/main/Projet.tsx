@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { FaExternalLinkAlt, FaJava } from 'react-icons/fa';
-import { SiNextdotjs, SiHtml5, SiPhp, SiReact, SiFlutter } from 'react-icons/si';
+import { SiNextdotjs, SiHtml5, SiPhp, SiReact, SiFlutter, SiPython } from 'react-icons/si';
 import { Link } from 'lucide-react';
 
 type Project = {
@@ -91,6 +91,18 @@ const projet: Project[] = [
   },
   {
     id: 6,
+    title: 'Repo Architect AI',
+    description: 'Outil d\'audit logiciel automatisé avec IA locale. Pipeline ETL complet : extraction de métriques de code (LoC, extensions, volumétrie) via GitPython et analyse avec Pandas. LLM local Mistral 8B via Ollama pour détecter les risques d\'architecture — 100 % offline. Dashboard interactif Streamlit avec graphiques Seaborn / Matplotlib.',
+    image: ['/repo-architect.png'],
+    years: '2026',
+    color: '#3572A5',
+    message: 'Voir code GitHub',
+    technologies: ['Python', 'Pandas', 'Streamlit', 'Ollama', 'GitPython', 'Seaborn', 'Matplotlib'],
+    externalLink: 'https://github.com/DiarraKonte/Sante_Du_Code',
+    icon: SiPython,
+  },
+  {
+    id: 7,
     title: 'OtakuGO',
     description: 'Application mobile Flutter qui recommande des animes selon tes préférences.',
     image: ['/Otaku.png', '/Otaku1.png', '/Otaku2.png', '/Otaku3.png', '/Otaku4.png', '/Otaku5.png', '/Otaku6.png', '/Otaku7.png', '/Otaku8.png'],
@@ -109,7 +121,10 @@ const TECH_COLORS: Record<string, string> = {
   React: '#61DAFB', TypeScript: '#3178c6', 'Next.js': '#ffffff', Flutter: '#54C5F8',
   Dart: '#0175C2', Java: '#007396', PHP: '#777BB4', 'Node.js': '#68a063',
   Git: '#F05032', GitHub: '#e6edf3', 'Tailwind CSS': '#06B6D4', Stripe: '#635BFF',
-  Firebase: '#FFCA28', HTML: '#E34F26', CSS: '#1572B6', default: '#58a6ff',
+  Firebase: '#FFCA28', HTML: '#E34F26', CSS: '#1572B6',
+  Python: '#3572A5', Pandas: '#150458', Streamlit: '#ff4b4b', Ollama: '#3fb950',
+  GitPython: '#F05032', Seaborn: '#4c72b0', Matplotlib: '#11557c',
+  default: '#58a6ff',
 };
 const techColor = (t: string) => TECH_COLORS[t] || TECH_COLORS.default;
 
@@ -135,7 +150,7 @@ const Projet = () => {
           className="mb-10"
         >
           <p className="font-mono text-xs mb-2" style={{ color: '#8b949e' }}>
-            <span style={{ color: '#3fb950' }}>$</span> gh repo list diarrakonte --limit 6
+            <span style={{ color: '#3fb950' }}>$</span> gh repo list diarrakonte --limit 7
           </p>
           <h2 className="text-4xl sm:text-6xl font-bold font-mono" style={{ color: '#e6edf3' }}>
             Projets

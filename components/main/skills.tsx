@@ -88,7 +88,10 @@ const CATEGORIES: Category[] = [
     skills: [
       {
         name: 'Python', icon: SiPython, color: '#3572A5', level: 60, label: 'INTERMÉDIAIRE',
-        related: [{ name: 'Stage IFFP', type: 'experience' }],
+        related: [
+          { name: 'Repo Architect AI', type: 'project' },
+          { name: 'Stage IFFP', type: 'experience' },
+        ],
       },
       {
         name: 'Node.js', icon: FaNodeJs, color: '#68a063', level: 50, label: 'INTERMÉDIAIRE',
