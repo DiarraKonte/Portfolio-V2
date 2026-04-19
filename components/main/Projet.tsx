@@ -93,7 +93,7 @@ const projet: Project[] = [
     id: 6,
     title: 'Repo Architect AI',
     description: 'Outil d\'audit logiciel automatisé avec IA locale. Pipeline ETL complet : extraction de métriques de code (LoC, extensions, volumétrie) via GitPython et analyse avec Pandas. LLM local Mistral 8B via Ollama pour détecter les risques d\'architecture — 100 % offline. Dashboard interactif Streamlit avec graphiques Seaborn / Matplotlib.',
-    image: ['/repo-architect.png'],
+    image: ['/repo_archi.png'],
     years: '2026',
     color: '#3572A5',
     message: 'Voir code GitHub',
