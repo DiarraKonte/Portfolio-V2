@@ -10,6 +10,7 @@ const NavLinks = [
   { file: 'parcours.md', label: 'Parcours', link: '#parcours', ext: 'md' },
   { file: 'skills.json', label: 'Skills', link: '#skills', ext: 'json' },
   { file: 'experience.ts', label: 'Expérience', link: '#experience', ext: 'ts' },
+  { file: 'bilan-but3.md', label: 'Bilan BUT 3', link: '#bilan', ext: 'md' },
   { file: 'projects.ts', label: 'Projets', link: '#projects', ext: 'ts' },
   { file: 'contact.sh', label: 'Contact', link: '#contact', ext: 'sh' },
 ];

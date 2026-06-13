@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Diarra Konte | Portfolio Développeur Fullstack",
-  description: "Portfolio de Diarra Konte, étudiant en BUT Informatique à l'IUT Sorbonne Paris Nord. Développement web, React, Next.js, TypeScript.",
+  title: "Diarra Konte | Portfolio BUT Informatique",
+  description: "Portfolio et bilan de compétences BUT Informatique de Diarra Konte : développement fullstack, projets, stage IFFP et analyse réflexive.",
   openGraph: {
     title: "Diarra Konte | Développeur Fullstack",
     description: "Étudiant en BUT Informatique, recherche alternance ESIEA. React, Next.js, TypeScript, Flutter.",

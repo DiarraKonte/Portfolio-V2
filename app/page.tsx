@@ -9,6 +9,7 @@ import Parcours from "@/components/main/Parcours";
 import Skills from "@/components/main/skills";
 import ScrollToTop from "@/components/main/ScrollToTop";
 import BackgroundGrid from "@/components/main/BackgroundGrid";
+import PortfolioBilan from "@/components/main/PortfolioBilan";
 
 // Swiper accesses localStorage at module load time — must be client-only
 const Experience = dynamic(() => import("@/components/main/Experience"), { ssr: false });
@@ -38,6 +39,10 @@ export default function Home() {
 
       <section id="experience" className="relative z-10">
         <Experience />
+      </section>
+
+      <section id="bilan" className="relative z-10">
+        <PortfolioBilan />
       </section>
 
       <section id="projects" className="relative z-10">

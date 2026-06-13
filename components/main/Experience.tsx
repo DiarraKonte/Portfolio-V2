@@ -28,12 +28,12 @@ const experiences: Experience[] = [
     place: 'Nanterre – La Défense',
     title: 'Assistant Développeur — Stage IFFP',
     description:
-      "Conception et déploiement d'un système de backup automatisé (scripts + Rclone) supprimant toute intervention manuelle sur les sauvegardes quotidiennes. Audit des logs serveur, diagnostic et correction de bugs récurrents. Mission en cours : intégration d'une API LLM pour automatiser des flux métiers internes.",
+      "Conception et déploiement d'un système de sauvegarde automatisé avec rclone, couvrant 103 Go de données critiques. Diagnostic d'incidents réseau, de permissions et d'encodage. Déploiement de Passbolt sur VPS Ubuntu, sécurisation des accès et automatisation de l'intégration des collaborateurs.",
     image: ['/IFFP.png'],
     years: 'Avril 2026 — Juin 2026',
     color: '#58a6ff',
     message: '',
-    technologies: ['Linux', 'Windows Server', 'Rclone', 'Python', 'WordPress', 'Google Apps Script', 'API LLM', 'Bash'],
+    technologies: ['Linux', 'Windows Server', 'Rclone', 'Python', 'PowerShell', 'Passbolt', 'Apache2', 'MariaDB'],
     externalLink: '',
   },
   {
@@ -41,7 +41,7 @@ const experiences: Experience[] = [
     place: 'Issy-les-Moulineaux',
     title: 'Stage chez ReeWayy',
     description:
-      "Développement de l'espace personnel des apprenants sur la plateforme AriMayi en tant que développeur front-end. Prise en charge d'une user story complète en collaboration avec l'équipe back-end. Méthodologie Agile.",
+      "Développement de l'espace personnel des apprenants sur la plateforme AriMayi. Prise en charge d'une user story complète avec l'équipe back-end dans un environnement Agile. Cette première expérience avec React, Next.js, Redux et Axios m'a appris à devenir rapidement opérationnel sur une stack inconnue.",
     image: ['/arimayi.png', '/dashboard.png', '/jobsearch.png', '/details.png', '/cv.png', '/cv2.png', '/cv3.png', '/validate.png', '/redirect.png'],
     years: 'Janvier 2025 — Mars 2025',
     color: '#3fb950',
@@ -66,7 +66,7 @@ const experiences: Experience[] = [
     place: 'Seine-Saint-Denis',
     title: 'Assistant technicien électronique',
     description:
-      'Stage technicien en électronique : diagnostic de matériel, relation client, support technique.',
+      'Assistant technicien en électronique : diagnostic de matériel, relation client, support technique.',
     image: ['/besmart.png'],
     years: 'Juin 2023 — Août 2023',
     color: '#e3b341',

@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { FaExternalLinkAlt, FaJava } from 'react-icons/fa';
-import { SiNextdotjs, SiHtml5, SiPhp, SiReact, SiFlutter, SiPython } from 'react-icons/si';
+import { SiNextdotjs, SiHtml5, SiPhp, SiReact, SiFlutter, SiPython, SiJavascript } from 'react-icons/si';
 import { Link } from 'lucide-react';
 
 type Project = {
@@ -115,6 +115,18 @@ const projet: Project[] = [
     externalLink: 'https://github.com/DiarraKonte/OtakuGO',
     icon: SiFlutter,
   },
+  {
+    id: 8,
+    title: 'Générateur de diagramme de Voronoï (S6.A.01)',
+    description: 'Application web calculant un diagramme de Voronoï à partir de coordonnées importées. La SAÉ compare le développement manuel aux solutions générées avec plusieurs IA, puis évalue leur qualité avec des tests unitaires et E2E.',
+    image: ['/voronoi.png'],
+    years: 'Février 2026 — Mars 2026',
+    color: '#F7DF1E',
+    message: 'Voir le code GitHub',
+    technologies: ['JavaScript', 'HTML', 'CSS', 'Canvas', 'Mistral', 'Vitest', 'Playwright'],
+    externalLink: 'https://github.com/manelbelaidouni/SAE_Voronoi_GroupeJ/tree/main/phase2/phase2-Mistral',
+    icon: SiJavascript,
+  },
 ];
 
 const TECH_COLORS: Record<string, string> = {
@@ -122,6 +134,8 @@ const TECH_COLORS: Record<string, string> = {
   Dart: '#0175C2', Java: '#007396', PHP: '#777BB4', 'Node.js': '#68a063',
   Git: '#F05032', GitHub: '#e6edf3', 'Tailwind CSS': '#06B6D4', Stripe: '#635BFF',
   Firebase: '#FFCA28', HTML: '#E34F26', CSS: '#1572B6',
+  JavaScript: '#F7DF1E', Canvas: '#ffa657', Mistral: '#f97316',
+  Vitest: '#6E9F18', Playwright: '#45ba4b',
   Python: '#3572A5', Pandas: '#e0a840', Streamlit: '#ff4b4b', Ollama: '#3fb950',
   GitPython: '#F05032', Seaborn: '#4c72b0', Matplotlib: '#11557c',
   default: '#58a6ff',
@@ -150,7 +164,7 @@ const Projet = () => {
           className="mb-10"
         >
           <p className="font-mono text-xs mb-2" style={{ color: '#8b949e' }}>
-            <span style={{ color: '#3fb950' }}>$</span> gh repo list diarrakonte --limit 7
+            <span style={{ color: '#3fb950' }}>$</span> gh repo list diarrakonte --limit {projet.length}
           </p>
           <h2 className="text-4xl sm:text-6xl font-bold font-mono" style={{ color: '#e6edf3' }}>
             Projets
