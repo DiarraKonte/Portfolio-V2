@@ -229,7 +229,7 @@ const PortfolioBilan = () => {
             <span style={{ color: "#3fb950" }}>$</span> npm run bilan-but3
           </p>
           <h2 className="text-4xl sm:text-6xl font-bold font-mono" style={{ color: "#e6edf3" }}>
-            Bilan BUT 3
+            Bilan BUT
           </h2>
           <p className="mt-4 max-w-4xl leading-7" style={{ color: "#8b949e" }}>
             Cette synthèse relie mes apprentissages universitaires, mes SAÉ, mes projets
