@@ -86,7 +86,7 @@ const projet: Project[] = [
     demoLabel: 'Voir le site',
     demoUrl: 'https://infobusiness-pc.vercel.app/',
     technologies: ['React', 'Next.js', 'TypeScript', 'Stripe', 'Firebase', 'Resend', 'Vercel', 'GoogleOAuth'],
-    externalLink: 'https://github.com/DiarraKonte/Infobusiness-PC',
+    externalLink: 'https://github.com/DiarraKonte/PC-Module',
     icon: SiReact,
   },
   {

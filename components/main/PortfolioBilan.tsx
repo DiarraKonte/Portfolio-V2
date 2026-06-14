@@ -28,6 +28,7 @@ const competences: Competence[] = [
       "BUT 1 — Calculatrice Java : première application complète réalisée en S2.",
       "BUT 2 — PingMe : développement d'une messagerie temps réel avec PHP, JavaScript et WebSockets.(En groupe)",
       "Stage BUT 2 — AriMayi : prise en charge d'une user story front-end en React et Next.js.",
+      "Projet personnel BUT 2 — LumnPC : plateforme pédagogique avec comptes, modules et paiement.",
       "BUT 3 — OtakuGO en S5 et générateur de diagrammes de Voronoï en S6. (En groupe)",
       "Refonte de pages WordPress durant le stage, avec prise en compte des besoins métier.",
       "Scripts Python, Bash et PowerShell conçus pour automatiser des tâches réelles.",
@@ -87,6 +88,7 @@ const competences: Competence[] = [
       "BUT 1 — Création et exploitation de premières bases de données relationnelles.",
       "BUT 2 — Modélisation de PingMe : utilisateurs, conversations, messages et annotations.(SAE S3 ET S4)",
       "Normalisation jusqu'à la BCNF et implémentation PostgreSQL avec clés étrangères et contraintes.",
+      "Projet personnel LumnPC — Gestion des comptes et de la progression avec Firebase.",
       "Configuration et maintenance de la base MariaDB utilisée par Passbolt.(Stage BUT3)",
       "Inventaire du parc et structuration de données issues de Google Workspace.(Stage BUT3)",
     ],
@@ -105,6 +107,7 @@ const competences: Competence[] = [
     evidence: [
       "BUT 2 — Évolution de PingMe sur deux semestres, du besoin initial à l'application complexe.(SAE S3 ET S4)",
       "Stage ReeWayy — Suivi d'une user story et coordination avec l'équipe back-end en méthode Agile.(Stage BUT2)",
+      "Projet personnel LumnPC — Conception progressive d'un produit, de l'idée au déploiement.",
       "BUT 3 — Organisation d'OtakuGO à cinq et comparaison structurée de plusieurs assistants IA pour la SAÉ Voronoï.(SAE S6)",
       "Découpage des projets en besoins, tâches, validations et livrables.(Toute les SAÉ)", 
       "Suivi régulier du stage et priorisation entre sauvegarde, sécurité et support.(Stage BUT3)",
@@ -160,7 +163,7 @@ const progression = [
     title: "Passer à des applications complexes",
     summary:
       "Conception de PingMe sur deux semestres, approfondissement de l'architecture, de la sécurité et des données, puis première expérience de développement en entreprise chez ReeWayy.",
-    highlights: ["PingMe en S3–S4", "SAÉ complexe : jusqu'à 15,97", "Stage ReeWayy : 13,80"],
+    highlights: ["PingMe en S3–S4", "Projet personnel LumnPC", "Stage ReeWayy : 13,80"],
   },
   {
     year: "BUT 3",
@@ -172,6 +175,43 @@ const progression = [
     highlights: ["OtakuGO en S5", "Voronoï / IA en S6", "103 Go sauvegardés"],
   },
 ];
+
+const YearDivider = ({
+  year,
+  period,
+  title,
+  color,
+}: {
+  year: string;
+  period: string;
+  title: string;
+  color: string;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, x: -20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    className="flex items-center gap-4 mt-12 mb-6"
+  >
+    <div className="shrink-0 py-2">
+      <p className="font-mono text-lg sm:text-xl font-bold" style={{ color }}>
+        {year}
+      </p>
+      <p className="font-mono text-[11px] mt-0.5" style={{ color: "#8b949e" }}>
+        {period}
+      </p>
+    </div>
+    <div className="min-w-0 flex-1">
+      <p className="text-sm sm:text-base font-semibold" style={{ color: "#e6edf3" }}>
+        {title}
+      </p>
+      <div
+        className="h-px mt-2 w-full"
+        style={{ background: `linear-gradient(to right, ${color}80, transparent)` }}
+      />
+    </div>
+  </motion.div>
+);
 
 const PortfolioBilan = () => {
   const [selected, setSelected] = useState(competences[0]);
@@ -364,6 +404,13 @@ const PortfolioBilan = () => {
           </div>
         </div>
 
+        <YearDivider
+          year="BUT 1"
+          period="2023 — 2024"
+          title="Acquisition des fondamentaux"
+          color="#58a6ff"
+        />
+
         <motion.article
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -433,6 +480,15 @@ const PortfolioBilan = () => {
             </div>
           </div>
         </motion.article>
+
+
+
+        <YearDivider
+          year="BUT 2"
+          period="2024 — 2025"
+          title="Applications complexes et première expérience professionnelle"
+          color="#bc8cff"
+        />
 
         <motion.article
           initial={{ opacity: 0, y: 16 }}
@@ -539,6 +595,17 @@ const PortfolioBilan = () => {
             <span style={{ color: "#bc8cff" }}>but-2/stage-reewayy.md</span>
             <span style={{ color: "#8b949e" }}>Janvier — mars 2025</span>
           </div>
+          <div
+            className="relative h-56 sm:h-72 border-b"
+            style={{ borderColor: "#30363d", background: "#f5f5f5" }}
+          >
+            <Image
+              src="/dashboard.png"
+              alt="Tableau de bord de l'espace apprenant AriMayi développé durant le stage ReeWayy"
+              fill
+              className="object-cover object-top"
+            />
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-0">
             <div className="p-5 sm:p-7 lg:border-r" style={{ borderColor: "#30363d" }}>
               <p className="font-mono text-xs mb-2" style={{ color: "#bc8cff" }}>
@@ -600,6 +667,83 @@ const PortfolioBilan = () => {
             </div>
           </div>
         </motion.article>
+
+        <motion.article
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-lg overflow-hidden mb-8"
+          style={{ border: "1px solid #6366f155", background: "#0d1117" }}
+        >
+          <div
+            className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 font-mono text-xs"
+            style={{ background: "#161b22", borderBottom: "1px solid #30363d" }}
+          >
+            <span style={{ color: "#818cf8" }}>but-2/projet-personnel-lumnpc.md</span>
+            <span style={{ color: "#8b949e" }}>Mai — juillet 2025</span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr]">
+            <div className="relative min-h-72 border-b lg:border-b-0 lg:border-r" style={{ borderColor: "#30363d", background: "#111827" }}>
+              <Image
+                src="/Lumn1.png"
+                alt="Page d'accueil de la plateforme LumnPC"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="p-5 sm:p-7">
+              <p className="font-mono text-xs mb-2" style={{ color: "#818cf8" }}>
+                ## Initiative personnelle en BUT 2
+              </p>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: "#e6edf3" }}>
+                LumnPC · Apprendre à configurer son PC
+              </h3>
+              <p className="text-sm leading-7 mb-5" style={{ color: "#c9d1d9" }}>
+                J&apos;ai imaginé et développé seul une plateforme pédagogique destinée
+                aux débutants qui souhaitent comprendre et choisir les composants d&apos;un
+                PC gaming. Le contenu est organisé en modules et le compte utilisateur
+                permet de retrouver son espace et de suivre sa progression.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                {[
+                  ["Produit", "Modules, leçons et suivi de progression"],
+                  ["Comptes", "Firebase et connexion Google"],
+                  ["Paiement", "Stripe Checkout et webhook (Plus d'actualité)"],
+                  ["Communication", "Formulaire de contact et envoi d'e-mails"],
+                ].map(([title, text]) => (
+                  <div key={title} className="p-3 rounded-md" style={{ background: "#161b22", border: "1px solid #30363d" }}>
+                    <p className="font-mono text-xs mb-1" style={{ color: "#818cf8" }}>{title}</p>
+                    <p className="text-xs leading-5" style={{ color: "#8b949e" }}>{text}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm leading-6 mb-5" style={{ color: "#8b949e" }}>
+                <span className="font-semibold" style={{ color: "#e3b341" }}>Apport personnel : </span>
+                ce projet m&apos;a appris à faire évoluer un produit complet sur plusieurs
+                semaines : améliorer l&apos;interface responsive, sécuriser les routes,
+                intégrer des services externes et corriger les problèmes jusqu&apos;à
+                obtenir une version déployable. Il m&apos;as aussi permis de mettre en
+                pratique mes compétences en React/Next.js apprises durant mon stage
+                avec AriMayi en BUT 2.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a href="https://github.com/DiarraKonte/PC-Module" target="_blank" rel="noopener noreferrer" className="font-mono text-xs hover:underline" style={{ color: "#58a6ff" }}>
+                  Consulter le dépôt GitHub ↗
+                </a>
+                <a href="https://infobusiness-pc.vercel.app/" target="_blank" rel="noopener noreferrer" className="font-mono text-xs hover:underline" style={{ color: "#3fb950" }}>
+                  Voir le site ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.article>
+
+        <YearDivider
+          year="BUT 3"
+          period="2025 — 2026"
+          title="Développement avancé et mise en production"
+          color="#3fb950"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
           <motion.article
