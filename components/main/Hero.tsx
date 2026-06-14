@@ -26,7 +26,7 @@ const SCRIPT: TerminalLine[] = [
   { id: 3, type: 'blank', text: '' },
   { id: 4, type: 'command', text: 'cat status.json' },
   { id: 5, type: 'json', text: '{' },
-  { id: 6, type: 'json', text: '  "statut": "Disponible pour alternance",' },
+  { id: 6, type: 'json', text: '  "statut": "Futur alternant chez EDF",' },
   { id: 7, type: 'json', text: '  "formation": "BUT Info → ESIEA Ingénieur",' },
   { id: 8, type: 'json', text: '  "rythme": "2 sem / 2 sem"' },
   { id: 9, type: 'json', text: '}' },

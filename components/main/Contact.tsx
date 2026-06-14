@@ -22,7 +22,7 @@ const Contact = () => {
 
   const SCRIPT: ContactLine[] = [
     { id: 1, type: 'command', text: 'ping diarra.dev' },
-    { id: 2, type: 'output', text: 'PONG — Disponible pour alternance · Septembre 2026' },
+    { id: 2, type: 'output', text: 'PONG — Futur alternant chez EDF · Septembre 2026' },
     { id: 3, type: 'blank', text: '' },
     { id: 4, type: 'command', text: './connect.sh' },
     { id: 5, type: 'output', text: 'Choisissez un canal :' },

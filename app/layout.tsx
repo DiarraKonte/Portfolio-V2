@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Portfolio et bilan de compétences BUT Informatique de Diarra Konte : développement fullstack, projets, stage IFFP et analyse réflexive.",
   openGraph: {
     title: "Diarra Konte | Développeur Fullstack",
-    description: "Étudiant en BUT Informatique, recherche alternance ESIEA. React, Next.js, TypeScript, Flutter.",
+    description: "Étudiant en BUT Informatique,futur alternant en cycle ingenieur à l'ESIEA. React, Next.js, TypeScript, Flutter.",
     type: "website",
   },
 };

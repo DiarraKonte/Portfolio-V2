@@ -30,8 +30,8 @@ const competences: Competence[] = [
       "Stage BUT 2 — AriMayi : prise en charge d'une user story front-end en React et Next.js.",
       "Projet personnel BUT 2 — LumnPC : plateforme pédagogique avec comptes, modules et paiement.",
       "BUT 3 — OtakuGO en S5 et générateur de diagrammes de Voronoï en S6. (En groupe)",
-      "Refonte de pages WordPress durant le stage, avec prise en compte des besoins métier.",
-      "Scripts Python, Bash et PowerShell conçus pour automatiser des tâches réelles.",
+      "Refonte de pages WordPress durant le stage, avec prise en compte des besoins métier.(Stage BUT 3)",
+      "Scripts Python, Bash et PowerShell conçus pour automatiser des tâches réelles.(Stage BUT 3)",
     ],
     reflection:
       "Je sais désormais partir d'un besoin, choisir une architecture cohérente et livrer une solution utilisable. Mon stage m'a appris qu'un développement réussi ne se limite pas au code : il doit aussi être maintenable, documenté et adapté aux utilisateurs.",
@@ -171,7 +171,7 @@ const progression = [
     color: "#3fb950",
     title: "Livrer en environnement professionnel",
     summary:
-      "Développement avancé avec OtakuGO en S5 et étude comparative humain–IA autour d'un diagramme de Voronoï en S6. Le stage IFFP élargit ensuite mon profil vers l'infrastructure et la sécurité.",
+      "Développement avancé avec OtakuGO en S5 et étude comparative humain–IA autour d'un diagramme de Voronoï en S6. Le stage IFFP élargit ensuite mes competences en adminstration, en securite et en reseaux.",
     highlights: ["OtakuGO en S5", "Voronoï / IA en S6", "103 Go sauvegardés"],
   },
 ];
@@ -504,6 +504,17 @@ const PortfolioBilan = () => {
             <span style={{ color: "#58a6ff" }}>but-2/pingme-retrospective.md</span>
             <span style={{ color: "#8b949e" }}>SAÉ 3.01 → SAÉ 4.A.01</span>
           </div>
+          <div
+            className="relative h-56 sm:h-80 lg:h-[420px] border-b"
+            style={{ borderColor: "#30363d", background: "#f7f7fb" }}
+          >
+            <Image
+              src="/pingme.png"
+              alt="Écran de connexion de l'application PingMe"
+              fill
+              className="object-contain"
+            />
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-0">
             <div className="p-5 sm:p-7 lg:border-r" style={{ borderColor: "#30363d" }}>
               <p className="font-mono text-xs mb-2" style={{ color: "#58a6ff" }}>
@@ -596,14 +607,14 @@ const PortfolioBilan = () => {
             <span style={{ color: "#8b949e" }}>Janvier — mars 2025</span>
           </div>
           <div
-            className="relative h-56 sm:h-72 border-b"
+            className="relative h-80 sm:h-[460px] border-b"
             style={{ borderColor: "#30363d", background: "#f5f5f5" }}
           >
             <Image
-              src="/dashboard.png"
+              src="/reewayy-dashboard.png"
               alt="Tableau de bord de l'espace apprenant AriMayi développé durant le stage ReeWayy"
               fill
-              className="object-cover object-top"
+              className="object-contain"
             />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-0">
@@ -862,6 +873,17 @@ const PortfolioBilan = () => {
             >
               stage-iffp/README.md
             </div>
+            <div
+              className="relative h-28 sm:h-36 border-b"
+              style={{ borderColor: "#30363d", background: "#ffffff" }}
+            >
+              <Image
+                src="/IFFP.png"
+                alt="Logo de l'IFFP"
+                fill
+                className="object-contain p-4 sm:p-5"
+              />
+            </div>
             <div className="p-5 sm:p-7">
               <h3 className="text-2xl font-bold mb-2" style={{ color: "#e6edf3" }}>
                 Stage BUT 3 · IFFP
@@ -877,7 +899,7 @@ const PortfolioBilan = () => {
               </p>
               <div className="grid grid-cols-2 gap-3 mb-5">
                 {[
-                  ["103 Go", "de données vérifiées"],
+                  ["103 Go", "de données vérifiées et sauvegardées a des frequebnces regulieres"],
                   ["6 j / 7", "de couverture planifiée"],
                   ["2 systèmes", "documentés et transférables"],
                   ["4 axes", "sécurité, backup, web, support"],
